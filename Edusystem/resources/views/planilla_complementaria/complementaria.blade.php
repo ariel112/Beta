@@ -14,26 +14,26 @@
 
                          
 
-{!! Form::open(['route' => 'pre_planilla.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
+{!! Form::open(['route' => 'complementaria.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
 
  <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Planillas complementarias</h2> 
-                    <div align="center" class="
-                     container">                           
-                            <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complementaria:</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12"> 
-                            <select name="complementaria" class="form-control"  required>                              
-                              <option selected disabled >Seleccione La complementaria </option>                              
-                              @foreach($complementarias as $complementaria)
-                              <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
-                              @endforeach                              
-                            </select>                    
-                            </div>
-                          </div>
-                    </div>
+   <div class="x_panel">
+     <div class="x_title">
+       <h2>Planillas complementarias</h2> 
+       <div align="center" class="
+        container">                           
+               <div class="form-group">
+               <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complementaria:</label>
+               <div class="col-md-6 col-sm-6 col-xs-12"> 
+               <select name="complementaria" class="form-control"  required>                              
+                 <option selected disabled >Seleccione La complementaria </option>                              
+                 @foreach($complementarias as $complementaria)
+                 <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
+                 @endforeach                              
+               </select>                    
+               </div>
+             </div>
+       </div>
    {!! Form::submit('Generar ',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
       @if($nuevo=='NO')
       @else()      
