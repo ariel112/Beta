@@ -126,8 +126,12 @@ $nombres = DB::select("
     public function create()
     {
         $nuevo='NO';
+        $complementarias = DB::select("
+                        SELECT *
+            FROM nombre_complementaria;
+         ");
             
-        return view('planilla_complementaria/complementaria')->with('nuevo',$nuevo);
+        return view('planilla_complementaria/complementaria')->with('nuevo',$nuevo)->with('complementarias',$complementarias);
     }
 
     /**

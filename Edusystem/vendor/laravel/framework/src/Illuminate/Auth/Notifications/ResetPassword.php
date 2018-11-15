@@ -17,7 +17,7 @@ class ResetPassword extends Notification
 
     /**
      * The callback that should be used to build the mail message.
-     *
+     *    
      * @var \Closure|null
      */
     public static $toMailCallback;

@@ -41,7 +41,8 @@ class CalendarioController extends Controller
     {
 
         $calendario = new Calendario_universidad($request->all());
-        $calendario->save();        
+        dd('hola');
+        //$calendario->save();        
        return redirect()->route('calendario.academico');        
 
     }

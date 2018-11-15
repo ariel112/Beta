@@ -9,6 +9,9 @@
 @section("content")
 <div class="right_col" role="main">
 
+@foreach($complementarias as $complementaria)
+@endforeach
+
 {!! Form::open(['route' => 'pre_planilla.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
 
  <div class="col-md-12 col-sm-12 col-xs-12">
