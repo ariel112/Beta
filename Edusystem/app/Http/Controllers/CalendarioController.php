@@ -40,10 +40,9 @@ class CalendarioController extends Controller
     public function store(Request $request)
     {
 
-<<<<<<< HEAD
         dd('hola');
         //$calendario->save();       
-=======
+
         $calendario = new Calendario_universidad($request->all());       
         $calendario->save();
 
@@ -55,8 +54,7 @@ class CalendarioController extends Controller
        $reporte->tipo_accion_id=3;
        $reporte->save();
        return redirect()->route('calendario.academico');        
->>>>>>> e1a51151f3959112e08cca25b8027947eb0be2ad
-
+       
     }
 
     /**
