@@ -123,8 +123,6 @@ class CalendarioController extends Controller
         $calendario->fill($request->all());
         $calendario->save();
 
-         $calendario = new Calendario_universidad($request->all());       
-        //$calendario->save();
 
 
         /*Guarda el reporte de la accion del calendario*/        
@@ -132,8 +130,8 @@ class CalendarioController extends Controller
        $reporte->users_id=$request->users_id;
        $reporte->calendario_universidad_id=$calendario->id;
        $reporte->tipo_accion_id=4;
-       //$reporte->save();
-       return redirect()->route('calendario.academico');
+       $reporte->save();
+    
 
         return redirect()->route('universidad.perfil',$request->universidad_id);
     }
