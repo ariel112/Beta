@@ -54,7 +54,8 @@ class CalendarioController extends Controller
        $reporte->tipo_accion_id=3;
        $reporte->save();
        return redirect()->route('calendario.academico');        
-       
+
+
     }
 
     /**
