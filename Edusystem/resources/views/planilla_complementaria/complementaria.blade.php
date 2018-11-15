@@ -12,17 +12,7 @@
 
 
 
-                          <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complementaria:</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12"> 
-                            <select name="complementaria" id="estado_civil" class="form-control"  required>                              
-                              <option selected disabled >Seleccione La complementaria </option>                              
-                              @foreach($complementarias as $complementaria)
-                              <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
-                              @endforeach                              
-                            </select>                    
-                            </div>
-                          </div>
+                         
 
 {!! Form::open(['route' => 'pre_planilla.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
 
@@ -32,14 +22,17 @@
                     <h2>Planillas complementarias</h2> 
                     <div align="center" class="
                      container">                           
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                              @if($nuevo=='NO')
-                              Seleccione la fecha: <input id="mesPrePlanilla"  name="fechaPrePlanilla" class="form-control"  type="date" required >
-                              @else() 
-                              Seleccione la fecha: <input id="mesPrePlanilla" name="fechaPrePlanilla" class="form-control" value="{{$date}}" type="date" required>
-                              @endif                             
+                            <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complementaria:</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12"> 
+                            <select name="complementaria" class="form-control"  required>                              
+                              <option selected disabled >Seleccione La complementaria </option>                              
+                              @foreach($complementarias as $complementaria)
+                              <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
+                              @endforeach                              
+                            </select>                    
                             </div>
-                            <br>
+                          </div>
                     </div>
    {!! Form::submit('Generar ',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
       @if($nuevo=='NO')

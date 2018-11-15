@@ -161,7 +161,7 @@ $nombres = DB::select("
      */
     public function show($id)
     {
-        //
+        dd('estas aqui');
     }
 
     /**
