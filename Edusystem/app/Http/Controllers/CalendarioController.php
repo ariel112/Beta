@@ -17,8 +17,6 @@ class CalendarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    $universidades = Universidad::all();
-       
     {    $universidades = Universidad::all();       
         return view('calendario_academico.index')->with('universidades',$universidades);   
     }
