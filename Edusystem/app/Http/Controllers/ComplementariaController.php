@@ -7,6 +7,7 @@ use App\Complementaria_planilla;
 use App\Datos_personales;
 use DB;
 
+
 class ComplementariaController extends Controller
 {
     /**

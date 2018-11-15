@@ -16,7 +16,8 @@
                   <div class="fondo-beca">                    
                     <br/>
 
- 			 {!! Form::open(['route' => ['calendario.show', $calendario->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}                 
+ 			 {!! Form::open(['route' => ['calendario.show', $calendario->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
+                           <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">                     
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>                         
                            <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Universidad:

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Universidad;
 use App\Calendario_universidad;
 use DB;
+use App\Reportes\Users_has_calendario_universidad;
 
 class CalendarioController extends Controller
 {
@@ -18,6 +19,7 @@ class CalendarioController extends Controller
     public function index()
     {    $universidades = Universidad::all();
        
+    {    $universidades = Universidad::all();       
         return view('calendario_academico.index')->with('universidades',$universidades);   
     }
 
@@ -40,8 +42,22 @@ class CalendarioController extends Controller
     public function store(Request $request)
     {
 
+<<<<<<< HEAD
         dd('hola');
         //$calendario->save();       
+=======
+        $calendario = new Calendario_universidad($request->all());       
+        $calendario->save();
+
+
+        /*Guarda el reporte de la accion del calendario*/        
+       $reporte= new Users_has_calendario_universidad();
+       $reporte->users_id=$request->users_id;
+       $reporte->calendario_universidad_id=$calendario->id;
+       $reporte->tipo_accion_id=3;
+       $reporte->save();
+       return redirect()->route('calendario.academico');        
+>>>>>>> e1a51151f3959112e08cca25b8027947eb0be2ad
 
     }
 
