@@ -18,6 +18,8 @@
                   </div>
                   <div class="x_content">
                 
+                    <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
+
                   	<div align="center">
                   		<h2>{{$universidad->nombre}}</h2>
                  		<h4>{{$universidad->abreviatura}}</h4>
@@ -29,7 +31,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Convenios <small>{{$universidad->abreviatura}} </small></h2>
-                   <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
+
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
