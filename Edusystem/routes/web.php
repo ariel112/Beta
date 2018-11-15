@@ -156,8 +156,9 @@ Route::resource('pre_planilla','PREPlanillasController');
 
 /*Accede ala planilla complementarias*/
 Route::resource('complementaria','ComplementariaController');
+
 /*Obtener los perfiles de los usuarios para la planilla complementaria*/
-Route::get('complemnetaria/perfil/{id}',
+Route::get('complementaria/perfil/{id}',
                        [
                         'as'=>'complementaria.perfil',
                         'uses'=>'ComplementariaController@perfil'
