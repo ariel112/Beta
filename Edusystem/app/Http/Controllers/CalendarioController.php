@@ -99,7 +99,7 @@ class CalendarioController extends Controller
 
     
         $reporte= new Users_has_calendario_universidad();
-        $reporte->users_id=1;
+        $reporte->users_id=$request->users_id;
         $reporte->calendario_universidad_id=$calendario->id;
         $reporte->tipo_accion_id=4;
         dd($reporte);     
