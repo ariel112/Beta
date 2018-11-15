@@ -73,7 +73,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-calendar"></i> Periodos Academicos <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-calendar"></i> Periodos Académicos <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('calendario.index')}}"><i class="fa fa-plus"></i> Agregar periodos </a></li>
                           <li><a href="{{route('calendario.academico')}}"><i class="fa fa-university"></i> Universidades</a></li>                           
@@ -81,7 +81,7 @@
                     </li>
                     <li><a><i class="fa fa-money"></i> Pago meses convenios<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('meses.index')}}"><i class="fa fa-search"></i> Buscar universidad</a></li>
+                          <li><a href="{{route('meses.index')}}"><i class="fa fa-search"></i> Buscar Universidad</a></li>
                           <li><a href="{{route('meses.create')}}"><i class="fa fa-circle-o-notch"></i>Busqueda General</a></li>
                         </ul>
                     </li> 
@@ -98,29 +98,29 @@
                           <li><a href="{{route('complementaria.mostrar')}}"><i class="fa fa-search"></i>Buscar </a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-refresh"></i> Actualizacion <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-refresh"></i> Actualización <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar becarios</a></li>
+                          <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-check-square"></i> Estatus Becarios <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar becarios</a></li>
+                          <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-ban"></i>Retencion de pagos<span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-ban"></i>Retención de Pagos<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('retencion.index')}}"><i class="fa fa-search"></i> Buscar becarios</a></li>
+                          <li><a href="{{route('retencion.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-list-alt"></i>Planilas Generales<span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-list-alt"></i>Planillas Generales<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('pre_planilla.index')}}"><i class="fa fa-search"></i> Buscar becarios</a></li>
+                          <li><a href="{{route('pre_planilla.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-list-alt"></i>Plan. Complementarias<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('complementaria.index')}}"><i class="fa fa-search"></i> Buscar becarios</a></li>
+                          <li><a href="{{route('complementaria.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                           <li><a href="{{route('complementaria.create')}}"><i class="fa fa-search"></i> Complementarias</a></li>
                         </ul>
                     </li>  
@@ -131,10 +131,10 @@
                           <li><a href="{{route('admin.index')}}">Buscar Usuarios</a></li>                         
                         </ul>
                       </li>
-                      <li><a><i class="fa fa-spinner"></i> Bitacora de usuarios <span class="fa fa-chevron-down"></span></a>
+                      <li><a><i class="fa fa-spinner"></i> Bitacora de Usuarios <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('admin.create')}}">Historial de sesiones</a></li>
-                          <li><a href="{{route('admin.bitacora')}}">Historial de acciones en el sistema</a></li>                  
+                          <li><a href="{{route('admin.create')}}">Historial de Sesiones</a></li>
+                          <li><a href="{{route('admin.bitacora')}}">Historial de Acciones en el Sistema</a></li>                  
                         </ul>
                       </li>                              
                     </ul>
