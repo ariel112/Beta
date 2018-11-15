@@ -40,8 +40,7 @@ class CalendarioController extends Controller
     public function store(Request $request)
     {
 
-        dd('hola');
-        //$calendario->save();       
+            
 
         $calendario = new Calendario_universidad($request->all());       
         $calendario->save();

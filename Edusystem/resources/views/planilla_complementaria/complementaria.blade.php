@@ -9,8 +9,20 @@
 @section("content")
 <div class="right_col" role="main">
 
-@foreach($complementarias as $complementaria)
-@endforeach
+
+
+
+                          <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complementaria:</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12"> 
+                            <select name="complementaria" id="estado_civil" class="form-control"  required>                              
+                              <option selected disabled >Seleccione La complementaria </option>                              
+                              @foreach($complementarias as $complementaria)
+                              <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
+                              @endforeach                              
+                            </select>                    
+                            </div>
+                          </div>
 
 {!! Form::open(['route' => 'pre_planilla.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
 
