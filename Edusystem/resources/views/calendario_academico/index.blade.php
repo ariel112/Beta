@@ -17,7 +17,7 @@
                     <br/>                    
                 
  			 {!! Form::open(['route' => 'calendario.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
-
+        <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">    
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Universidad:
