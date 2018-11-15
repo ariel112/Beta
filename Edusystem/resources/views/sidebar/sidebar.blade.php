@@ -79,7 +79,7 @@
                           <li><a href="{{route('calendario.academico')}}"><i class="fa fa-university"></i> Universidades</a></li>                           
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-money"></i> Pago meses convenios<span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-money"></i> Pago Meses Convenios<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('meses.index')}}"><i class="fa fa-search"></i> Buscar Universidad</a></li>
                           <li><a href="{{route('meses.create')}}"><i class="fa fa-circle-o-notch"></i>Busqueda General</a></li>
