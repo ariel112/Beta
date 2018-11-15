@@ -18,35 +18,11 @@
 
  			 {!! Form::open(['route' => ['calendario.show', $calendario->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
                            <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">                     
-                          <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>                         
-                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Universidad:
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select id="universidad" name="universidad_id" class="form-control" required>
-                              <option selected disabled>Seleccion la universidad</option>
-                                  @foreach($universidades as $universidad)
-                                  <option value="{{$universidad->id}}">{{$universidad->nombre}}</option>                             
-                                  @endforeach    
-                              </select>
-                            </div>
-                          </div>  
-                            <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Seleccione el periodo
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select  id="periodo" name="periodo" class="form-control" required>
-                            <option selected disabled>Seleccion un periodo</option>
-                            </select>
-                            </div>
-                          </div>
-                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3" for="last-name">Descripción del periodo:
-                            </label>
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="text" name="descripcion" required="required" class="form-control col-md-3 col-xs-3">
-                            </div>
-                          </div>
+                          <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div> 
+
+
+
+
                            <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Selecione fecha de inicio:
                             </label>
