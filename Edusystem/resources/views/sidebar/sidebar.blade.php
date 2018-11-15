@@ -75,7 +75,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-calendar"></i> Periodos Académicos <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('calendario.index')}}"><i class="fa fa-plus"></i> Agregar periodos </a></li>
+                          <li><a href="{{route('calendario.index')}}"><i class="fa fa-plus"></i> Agregar Periodos </a></li>
                           <li><a href="{{route('calendario.academico')}}"><i class="fa fa-university"></i> Universidades</a></li>                           
                         </ul>
                     </li>
