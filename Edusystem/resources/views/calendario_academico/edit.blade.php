@@ -17,7 +17,8 @@
                     <br/>
 
  			 {!! Form::open(['route' => ['calendario.show', $calendario->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
-                           <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">                     
+                           <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
+                           <input type="text" name="universidad_id" style="display: none;" value="{{$calendario->universidad_id}}">                        
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div> 
 
 
