@@ -132,7 +132,6 @@ class CalendarioController extends Controller
        $reporte->users_id=$request->users_id;
        $reporte->calendario_universidad_id=$calendario->id;
        $reporte->tipo_accion_id=4;
-       dd($reporte);
        //$reporte->save();
        return redirect()->route('calendario.academico');
 
