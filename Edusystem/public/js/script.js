@@ -181,6 +181,14 @@ $('#respuesta_id').blur(function(event){
    onrespuesta(identidad);
 });
 
+
+/*codigo para ver los periodos por universidad*/
+$('#complementaria').change(function(event){
+   var complementaria = event.target.value;
+
+  fecha =$('#fecha-'+complementaria).val();
+   oncomplementaria(fecha);
+});
 /*
 $('#generar_preplanilla').click(function(){
   console.log($('#mesPrePlanilla').val());
@@ -360,4 +368,39 @@ function onrespuesta(identidad){
 
 
 
-/*-------------------------------------------------codigo para cargar las preplanillas segun el mes------------------------------------------*/
+/*-------------------------------------------------codigo para cargar si estoy en complementaria------------------------------------------*/
+
+function oncomplementaria(fecha){
+
+  if(fecha){
+
+      $.get('/api/complementaria/'+fecha+'/respuesta', function(data){     
+        if( Object.keys(data).length === 0 ) {
+              $("#complementaria12").css({'border':'2px solid #3edc3e'});
+                         $('#sp_fecha').fadeOut();
+                         $('#sp_fecha_si').fadeIn();
+                         $('#btnEmpty').fadeIn();
+
+                console.log('la fecha No existe exite');
+                } 
+                else{
+                      var dato =data[0].respuesta; 
+                      if(dato=='SI'){
+                         $("#complementaria12").css({'border':'2px solid red'});
+                         $('#sp_fecha').fadeIn();
+                         $('#sp_fecha_si').fadeOut();
+                          $('#btnEmpty').fadeOut();
+                         
+                      console.log('la fecha ya exite');
+                                     }
+                   }
+
+              });
+
+  }else{
+              console.log('Nada');
+            
+
+        }
+
+}

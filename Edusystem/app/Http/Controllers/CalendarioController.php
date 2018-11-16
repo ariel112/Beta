@@ -67,7 +67,7 @@ class CalendarioController extends Controller
         $calendario->save();
 
 
-        /*Guarda el reporte de la accion del calendario*/        
+       /*Guarda el reporte de la accion del calendario*/        
        $reporte= new Users_has_calendario_universidad();
        $reporte->users_id=$request->users_id;
        $reporte->calendario_universidad_id=$calendario->id;

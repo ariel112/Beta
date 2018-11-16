@@ -103,8 +103,8 @@ class ComplementariaController extends Controller
         
           
 $nombres = DB::select("
-            
-                SELECT X.id as id, X.nombre as nombre, X.estado as estado
+
+                SELECT X.id as id, X.nombre as nombre, X.estado as estado, X.fecha as fecha
                 FROM nombre_complementaria X
                 LEFT JOIN (
                 SELECT A.nombre_complementaria_id AS id, A.datos_personales_id
@@ -112,7 +112,8 @@ $nombres = DB::select("
                 WHERE A.datos_personales_id='$id') Y
                 ON(Y.id=X.id)
                 WHERE Y.id IS NULL  AND X.estado= 'Activo'
-                ;       
+
+                 
            ");
 
 
@@ -143,10 +144,20 @@ $nombres = DB::select("
      */
       public function store(Request $request)
     {   
+        $fechas= DB::select("
+            SELECT *
+              FROM nombre_complementaria
+              WHERE id='$request->nombre_complementaria_id';
+                          ");
+
+        foreach ($fechas as $fecha) {
+          $mes=$fecha->fecha;
+        }
 
         $complementaria= new Complementaria_planilla($request->all());
+        $complementaria->fecha =$mes;
         
-
+        
         $complementaria->save();
 
     return redirect()->route('complementaria.perfil',$complementaria->datos_personales_id);

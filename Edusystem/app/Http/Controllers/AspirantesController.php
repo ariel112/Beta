@@ -480,5 +480,16 @@ class AspirantesController extends Controller
 
     }
 
+    public function bycomplementaria($complementaria){
+
+        return DB::select("
+                    SELECT IF(A.fecha, 'SI','NO') AS respuesta 
+            FROM planilla_complementaria A
+            WHERE '$complementaria' = fecha;
+         ");
+    }
+
+
+
 
 }

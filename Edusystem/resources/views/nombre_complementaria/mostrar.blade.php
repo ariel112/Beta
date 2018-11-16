@@ -30,6 +30,7 @@
                         <tr>
                        
                         <th>Nombre</th>
+                        <th>Fecha</th>
                         <th>Estado</th>                                            
                         <th class="alinear"> Desactivar</th>
                         </tr>
@@ -41,6 +42,7 @@
                                 <tr>
                                     
                                     <td>{{$dato->nombre}}</td>
+                                    <td>{{$dato->fecha}}</td>
                                     <td>{{$dato->estado}}</td>                                                                       
                                     <td class="alinear">
                                         <a href="{{route('Cnombre.show',$dato->id)}}">

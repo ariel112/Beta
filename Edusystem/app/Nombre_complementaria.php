@@ -13,6 +13,7 @@ class Nombre_complementaria extends Model
     	'users_id',
     	'descripcion',
     	'nombre',
-    	'estado'
+    	'estado',
+    	'fecha'
     ];
 }

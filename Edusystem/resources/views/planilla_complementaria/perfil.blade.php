@@ -183,14 +183,18 @@
               <textarea name="observacion" class="form-control"></textarea>
             </div> 
              
-           <div class="form-group" >
+           <div class="form-group" id="complementaria1" >
             <label for="message-text" class="col-form-label">Mes:</label>           
 
-            <select class="form-control" name="nombre_complementaria_id">
+            <select class="form-control" name="nombre_complementaria_id" id="complementaria">
+              <option selected disabled >Seleccione la complementaria </option> 
               @foreach($nombres as $nombre)
               <option value="{{$nombre->id}}">{{$nombre->nombre}}</option>
+              <option id="fecha-{{$nombre->id}}" value="{{$nombre->fecha}}" style="display: none;"></option>          
               @endforeach
             </select>
+             <span id="sp_fecha_si" style="color: #3edc3e; display: none;"><i class="fa fa-check-circle"></i></span>
+            <span id="sp_fecha" style="color: red; display: none;"><i class="fa fa-close"> </i> El Becario ya fue agregado a una complementaria con esta fecha</span>
           </div>       
         
         </form>
@@ -211,7 +215,8 @@
 
 @section('script')
 
-
+   <!--Este script es para las peticiones con ajax -->
+    <script src="{{ asset('js/script.js')}}"></script> 
 
  <!-- Datatables -->
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nombre_complementaria;
+use DB;
 
 class NombreComplementariaController extends Controller
 {
@@ -19,7 +20,11 @@ class NombreComplementariaController extends Controller
     }
     
      public function mostrar(){
-        $nombres = Nombre_complementaria::all();   
+        $nombres = Nombre_complementaria::all();
+        $nombres= DB::select("
+        SELECT id, users_id, nombre,  Date_format(fecha,'%Y-%m') as fecha, estado
+            FROM nombre_complementaria; 
+            ");   
         return view('nombre_complementaria.mostrar')->with('nombres',$nombres);
     }
     /**
@@ -43,6 +48,7 @@ class NombreComplementariaController extends Controller
     public function store(Request $request)
     {          
         $nombre = new Nombre_complementaria($request->all());
+        $nombre->fecha = $request->fecha.'-01';
         $nombre->save();
         return redirect()->route('complementaria.mostrar');
     }
