@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Complementaria_planilla;
 use App\Datos_personales;
+use App\Nombre_complementaria;
 use DB;
+use Carbon\Carbon;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ComplementariaExport;
 
 
 class ComplementariaController extends Controller
@@ -209,9 +214,89 @@ $nombres = DB::select("
         //
     }
 
-    public function complementaria(){
+    public function generacomplementaria(Request $request){
+      $fecha1= Nombre_complementaria::find($request->complementaria);
+
+      $date= $fecha1->id;
+      
+      $carbon=Carbon::now();     
+        $fecha = Carbon::parse($fecha1->fecha);
+        
+        $mfecha = $fecha->format("m");
+        $yfecha =  $fecha->format("Y");
+      
+        
+        /*condicion para sacar el mes en espanol*/
+         if($mfecha==01)    
+            $mesP='Enero';
+         if($mfecha==02)    
+            $mesP='Febrero';
+         if($mfecha==03)    
+            $mesP='Marzo';
+         if($mfecha==04)    
+            $mesP='Abril';
+         if($mfecha==05)    
+            $mesP='Mayo';
+         if($mfecha==06)    
+            $mesP='Junio';
+         if($mfecha==07)    
+            $mesP='Julio';
+         if($mfecha==8)    
+            $mesP='Agosto';
+         if($mfecha==9)    
+            $mesP='Septiembre';
+         if($mfecha==10)    
+            $mesP='Octubre';
+         if($mfecha==11)    
+            $mesP='Noviembre';
+         if($mfecha==12)    
+            $mesP='Diciembre';
+       
+
+
+      $nuevo = DB::select("
+          SELECT 
+                    A.nombre,
+                    B.datos_personales_id,
+                    C.genero AS genero,
+                    C.identidad AS identidad,
+                    C.nombre AS nombre,
+                    C.celular AS celular,
+                    I.departamento AS departamento,
+                    X.nombre AS universidad,
+                    X.abreviatura as abreviatura
+                FROM nombre_complementaria A
+                LEFT JOIN planilla_complementaria B
+                ON(B.nombre_complementaria_id=A.id)
+                INNER JOIN datos_personales C
+                ON(B.datos_personales_id=C.id)
+                INNER JOIN datos_personales_has_carreras D
+                ON(D.id_datos_personales=C.id)
+                INNER JOIN carreras E
+                ON(D.carrera_id=E.id)
+                INNER JOIN facultad F
+                ON(E.facultad_id=F.id)
+                INNER JOIN campus G
+                ON(F.campus_id=G.id)
+                INNER JOIN universidad X
+                ON(G.universidad_id=X.id)
+                INNER JOIN municipio H
+                ON(G.id_municipio=H.id_municipio)
+                INNER JOIN departamento I
+                ON(H.id_depto=I.id_depto)
+          WHERE A.id = '$request->complementaria';
+         ");
+      $complementarias = DB::select("
+                        SELECT *
+            FROM nombre_complementaria;
+         ");
+
+      
+      return view('planilla_complementaria/complementaria')->with('nuevo',$nuevo)->with('complementarias',$complementarias)->with('mesP',$mesP)->with('date',$date);
        
     }
+
+
 
     public function GETcomplementaria($complementaria){
       $complementarias= select::DB("
@@ -242,6 +327,21 @@ $nombres = DB::select("
             ON(H.id_depto=I.id_depto)
             WHERE A.nombre ='complementaria becas';
        ");
+
       return view('planilla_complementaria/complementaria')->with('complementarias',$complementarias);
     }
+
+
+
+public function export($date){
+               
+
+return (new ComplementariaExport($date))->download('Complementaria.xlsx');
+    }
+
+
+
+
+
+
 }

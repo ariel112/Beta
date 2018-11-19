@@ -185,3 +185,13 @@ Route::get('complementaria/generar-nombre',
                 'as' => 'complementaria.cargar',
                 'uses' => 'ComplementariaController@complementaria'
               ]);
+
+/*Genero la complementaria*/
+Route::POST('complementarias-generar','ComplementariaController@generacomplementaria')->name('seleccion.complementaria');
+
+/*preplanilla exporta a excel*/
+Route::get('complementaria/descarga/{date}',
+          [
+            'as'=>'descarga.complementaria',
+            'uses'=>'ComplementariaController@export'
+          ]);

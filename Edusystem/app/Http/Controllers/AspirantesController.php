@@ -428,10 +428,16 @@ class AspirantesController extends Controller
     
 
         return redirect()->route('aspirantes.index');
+    }
 
-
+    public function listadoCambio(){
 
     }
+    
+    public function cambioUniversiadad($id){
+     dd('estoy en univerisdade');
+    }
+
 
     /**
      * Remove the specified resource from storage.

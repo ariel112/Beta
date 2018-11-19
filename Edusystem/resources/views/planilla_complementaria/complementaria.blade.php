@@ -14,7 +14,7 @@
 
                          
 
-{!! Form::open(['route' => 'complementaria.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
+{!! Form::open(['route' => 'seleccion.complementaria', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
 
  <div class="col-md-12 col-sm-12 col-xs-12">
    <div class="x_panel">
@@ -28,7 +28,8 @@
                <select name="complementaria" class="form-control"  required>                              
                  <option selected disabled >Seleccione La complementaria </option>                              
                  @foreach($complementarias as $complementaria)
-                 <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>                             
+                 <option value="{{$complementaria->id}}">{{$complementaria->nombre}}</option>
+
                  @endforeach                              
                </select>                    
                </div>
@@ -37,7 +38,7 @@
    {!! Form::submit('Generar ',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
       @if($nuevo=='NO')
       @else()      
-      <a href="{{url("preplanilla/descarga/$date")}}" class="btn btn-success">Descargar excel</a>
+       <a href="{{url("complementaria/descarga/$date")}}" class="btn btn-success">Descargar excel</a>
       @endif     
                     <div class="clearfix"></div>
                   </div>
@@ -61,13 +62,13 @@
                          <tr>
                            @if($becario->genero==1)
                                     <td class="center">
-                                        <a href="{{route('aspirantes.perfil', $becario->id_datos_personales)}}">
+                                        <a href="{{route('aspirantes.perfil', $becario->datos_personales_id)}}">
                                             <img class="center-imagen" width="50" height="50" src="{{asset('images/estudentM.png')}}">
                                         </a>    
                                     </td>
                                     @else
                                     <td class="center">
-                                        <a href="{{route('aspirantes.perfil',$becario->id_datos_personales)}}">
+                                        <a href="{{route('aspirantes.perfil',$becario->datos_personales_id)}}">
                                             <img class="center-imagen" width="50" height="50" src="{{asset('images/estudentF.png')}}">
                                         </a>    
                                     </td>

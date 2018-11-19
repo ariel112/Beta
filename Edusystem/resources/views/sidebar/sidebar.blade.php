@@ -123,6 +123,11 @@
                           <li><a href="{{route('complementaria.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                           <li><a href="{{route('complementaria.create')}}"><i class="fa fa-search"></i> Complementarias</a></li>
                         </ul>
+                    </li>
+                    <li><a><i class="fa fa-university"></i>Cambio de Universidad<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li> 
+                        </ul>
                     </li>  
 
                 @if(Auth::user()->Administrador()) 
