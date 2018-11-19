@@ -82,7 +82,7 @@
                          </tr> 
                          @endforeach
                        
-                        @endif 
+                       @endif 
 
                       </tbody>
                     </table>
@@ -96,9 +96,12 @@
 
 @section('script')
 
+
+
+
    
-    <!--Este script es para las peticiones con ajax -->
-    <script src="{{ asset('js/script.js')}}"></script> 
+<!--Este script es para las peticiones con ajax -->
+<script src="{{ asset('js/script.js')}}"></script> 
 
  <!-- Datatables -->
 <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
@@ -129,5 +132,19 @@
     <script type="text/javascript" src="{{asset('template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
     <!-- starrr -->
     <script type="text/javascript" src="{{asset('template/vendors/starrr/dist/starrr.js')}}"></script> 
+
+
+
+    <script type="text/javascript" src="{{asset('template/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script type="text/javascript" src="{{asset('template/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script> 
+    <script type="text/javascript" src="{{asset('template/vendors/google-code-prettify/src/prettify.js')}}"></script>    
+    <!-- jQuery Tags Input -->
+    <script type="text/javascript" src="{{asset('template/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+
+    
+
+  
+    
 
 @endsection

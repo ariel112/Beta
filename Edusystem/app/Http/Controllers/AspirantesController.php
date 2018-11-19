@@ -337,8 +337,7 @@ class AspirantesController extends Controller
         $carrerasp = DB::select(" 
             SELECT id
         FROM datos_personales_has_carreras
-        where id_datos_personales='$id';
-        
+        where id_datos_personales='$id';        
          ");
         /*el codigo de la carrera a modificar*/
         foreach ($carrerasp as $car) {
@@ -352,6 +351,70 @@ class AspirantesController extends Controller
 
     }
 
+
+    public function cambioUniversiad($id){
+        /*se utiliza para saber las universidades que fueron seleccionadas*/
+        $list_universidad= DB::select("
+             SELECT 
+                 A.carrera_id AS id_carrera, 
+                 B.nombre as nombre_carrera, 
+                 C.id as id_facultad, 
+                 C.nombre as nombre_facultad,
+                 D.id as id_campus, 
+                 D.nombre as nombre_campus, 
+                 D.universidad_id as id_universidad
+                    FROM datos_personales_has_carreras A
+                    INNER JOIN carreras B
+                    ON(A.carrera_id=B.id)
+                    INNER JOIN facultad C
+                    ON(B.facultad_id=C.id)
+                    INNER JOIN campus D
+                    ON(C.campus_id=D.id)
+                    WHERE A.id_datos_personales='$id';               
+                              ");
+        /*aspirantes*/
+        $aspirante = Datos_personales::find($id);
+
+        /*recorre el arreglo de lsit univerisdades y lo asigna*/            
+        foreach ($list_universidad as $list_uni) {
+           $listUnivesidad=$list_uni->id_universidad;           
+           $id_campus=$list_uni->id_campus;
+           $nombre_campus=$list_uni->nombre_campus;
+           $id_facultad=$list_uni->id_facultad;
+           $nombre_facultad=$list_uni->nombre_campus;
+           $id_carrera=$list_uni->id_carrera;
+           $nombre_carrera=$list_uni->nombre_carrera;
+        }
+       $universidades = Universidad::all();
+         $carrerasp = DB::select(" 
+            SELECT id
+        FROM datos_personales_has_carreras
+        where id_datos_personales='$id';        
+         ");
+        /*el codigo de la carrera a modificar*/
+        foreach ($carrerasp as $car) {
+            $idd_carrera = $car->id;
+          }
+
+
+
+    return view('aspirantes.cambiouniversidad')->with('listUnivesidad',$listUnivesidad)->with('id_campus',$id_campus)->with('nombre_campus',$nombre_campus)->with('id_facultad',$id_facultad)->with('nombre_facultad',$nombre_facultad)->with('id_carrera',$id_carrera)->with('nombre_carrera',$nombre_carrera)->with('aspirante',$aspirante)->with('universidades',$universidades)->with('idd_carrera',$idd_carrera);
+    }
+    
+
+    public function indexcambiouniversidad(){
+         $datos = Datos_personales::all();
+        
+        return view('aspirantes.indexcambiouniversidad')->with('datos', $datos);
+    }
+
+    public function updateUniversidad(Request $request, $id){
+       /*Datos de la carrera*/
+        $carrera = Datos_personales_has_carreras::find($request->idd_carrera);        
+        $carrera->carrera_id=$request->carrera_id;
+        $carrera->save();
+    return redirect()->route('index.cambiouniversidad');
+    }
 
 
     /**
@@ -420,10 +483,9 @@ class AspirantesController extends Controller
         $dependiente->save();
         
          /*Datos de la carrera*/
-        $carrera = Datos_personales_has_carreras::find($request->idd_carrera);
-        
+       /* $carrera = Datos_personales_has_carreras::find($request->idd_carrera);        
         $carrera->carrera_id=$request->carrera_id;
-        $carrera->save();
+        $carrera->save();*/
 
     
 
@@ -434,9 +496,7 @@ class AspirantesController extends Controller
 
     }
     
-    public function cambioUniversiadad($id){
-     dd('estoy en univerisdade');
-    }
+  
 
 
     /**

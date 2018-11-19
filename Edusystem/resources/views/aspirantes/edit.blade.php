@@ -170,65 +170,7 @@ function valida(e){
 
 
                           <br>
-                          <br>
-                          <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>
-                          <!--
-							             <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nivel Educativo: <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                               <select name="genero" id="heard" class="form-control" required>
-		                          <option selected disabled >Seleccion el nivel educativo:</option>
-		                          <option value="1">Primaria</option>
-		                          <option value="2">Secundaria</option>
-		                          <option value="3">Universidad</option>
-		                        </select> 
-                            </div>
-                          </div>  
-                        -->
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Universidad:
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select id="universidad" class="form-control"  required>		                      
-                              @foreach($universidades as $universidad)
-                              @if($listUnivesidad==$universidad->id)
-                              <option selected value="{{$universidad->id}}">{{$universidad->nombre}}</option>
-                              @else
-                               <option value="{{$universidad->id}}">{{$universidad->nombre}}</option>
-                              @endif                                                          
-                              @endforeach    
-		                      </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Campus
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select  id="campus" class="form-control"  required >
-			                      <option selected value="{{$id_campus}}">{{$nombre_campus}}</option>		                      
-			                    </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Facultad
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select  id="facultad" class="form-control"  required >
-                            <option selected value="{{$id_facultad}}">{{$nombre_facultad}}</option>                          
-                          </select>
-                            </div>
-                          </div>
-                          <input type="text" name="idd_carrera" style="display: none;" value="{{$idd_carrera}}">
-                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Carrera
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select  id="carrera" name="carrera_id" class="form-control"  required >
-                            <option selected value="{{$id_carrera}}">{{$nombre_carrera}}</option>                          
-                          </select>
-                            </div>
-                          </div>
+                         
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >Cuenta Universitaria:
                             </label>

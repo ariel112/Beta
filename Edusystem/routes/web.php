@@ -195,3 +195,12 @@ Route::get('complementaria/descarga/{date}',
             'as'=>'descarga.complementaria',
             'uses'=>'ComplementariaController@export'
           ]);
+
+/*Cambio de universidad modulo*/
+Route::get('cambio-universidad/{id}','AspirantesController@cambioUniversiad')->name('cambio.universidad');
+
+/*cambio index universidad*/
+Route::get('cambio-index-universidad','AspirantesController@indexcambiouniversidad')->name('index.cambiouniversidad');
+
+/*Proceso de llenado de la informacion*/
+Route::PUT('update-cambiouniversidad/{id}','AspirantesController@updateUniversidad')->name('update.cambiouniversidad');
