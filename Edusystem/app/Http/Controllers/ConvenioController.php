@@ -84,19 +84,5 @@ class ConvenioController extends Controller
         //
     }
 
-     public function bitacora(){
-           $acciones = DB::select("
-              SELECT B.name AS nombre, B.type as type, B.email as email,A.created_at as fecha, C.nombre as accion,E.nombre AS beca, D.color AS color
-                FROM users_has_becas A
-                INNER JOIN users B
-                ON(A.users_id=B.id)
-                INNER JOIN tipo_accion c
-                on(A.tipo_accion_id=C.id)
-                INNER JOIN color D 
-                ON(C.color_id=D.id)
-                INNER JOIN becas E
-                ON(A.becas_id=E.id)   ;          
-             ");
-           return view("user/bitacora")->with('acciones',$acciones);
-    }
+   
 }

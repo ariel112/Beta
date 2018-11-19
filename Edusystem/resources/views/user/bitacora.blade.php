@@ -23,7 +23,8 @@
                      <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                               <tr>                            
-                              <th>Accion</th>
+                              <th class="text-capitalize" >Accion</th>
+                              <th>Fecha</th>
                                            
                               </tr>
                             </thead>
@@ -34,23 +35,25 @@
                                               <div class="ui feed">
 
                                                 <div class="event">
-                                                  <div class="label">
-                                                    <img src="{{asset('images/user.png')}}">
-                                                  </div>
+                                                  
                                                   <div class="content">
                                                     <div class="summary">
                                                       <a class="user" class="text-capitalize">
-                                                        {{$accion->nombre}} &nbsp;
+                                                        <i class="fa fa-user"></i> &nbsp;
+                                                        {{$accion->usuario}} &nbsp;
                                                       </a> <font style="color:{{$accion->color}}; ">{{$accion->accion}}</font>&nbsp;&nbsp;
-                                                       <font style="color: gray;">{{$accion->beca}}</font>
-                                                      <div class="date">
-                                                        {{$accion->fecha}}
-                                                      </div>
+                                                       <font style="color: gray;">{{$accion->nombre}}</font>
+                                                      
                                                     </div>
                                                  
                                                   </div>
                                                 </div>                                                
                                               </div>
+                                          </td>
+                                          <td>
+                                            <div class="date">
+                                                {{$accion->fecha}}
+                                            </div>
                                           </td>
                                                      
                                       </tr>                                     
@@ -69,7 +72,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

@@ -194,5 +194,52 @@ class UserController extends Controller
         //
     }
 
-   
+
+
+    /*Va a registrar todas las acciones que el usuario haga en el sistema*/
+     public function bitacora(){
+           $acciones = DB::select("
+              
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   E.nombre AS nombre,
+   D.color AS color
+                FROM users_has_becas A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN becas E
+                ON(A.becas_id=E.id)
+         UNION ALL       
+               
+SELECT  
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email, 
+   A.created_at as fecha, 
+   C.nombre as accion, 
+   CONCAT(E.periodo, ' ',Date_format(E.inicio,'%Y'),' ',F.abreviatura )AS nombre, 
+   D.color AS color
+                FROM users_has_calendario_universidad A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN calendario_universidad E
+                ON(A.calendario_universidad_id=E.id)
+                INNER JOIN universidad F
+                ON(E.universidad_id=F.id)
+                order by fecha DESC  ;          
+             ");
+           return view("user/bitacora")->with('acciones',$acciones);
+    }
 }

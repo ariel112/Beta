@@ -42,7 +42,7 @@ Route::get('admin/perfil/{id}',
 /*ruta para las acciones en el sistema*/
 Route::get('sistema/acciones',[ 
                 'as'=>'admin.bitacora',
-                 'uses'=> 'ConvenioController@bitacora'
+                 'uses'=> 'UserController@bitacora'
                   ]);
 
 

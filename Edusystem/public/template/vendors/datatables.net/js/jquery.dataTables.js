@@ -11647,7 +11647,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sSearchPlaceholder": "",
+			"sSearchPlaceholder": "Buscar",
 	
 	
 			/**
@@ -12075,7 +12075,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"asSorting": [ 'asc', 'desc' ],
+		"asSorting": [  'desc' ],
 	
 	
 		/**
