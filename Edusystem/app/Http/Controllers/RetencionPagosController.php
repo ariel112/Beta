@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Datos_personales;
 use App\Pagos_retenido;
+use App\Reportes\retenido_has_users;
 
 class RetencionPagosController extends Controller
 {
@@ -49,6 +50,14 @@ class RetencionPagosController extends Controller
         $becario->retencion_inicio= $datos->inicio;
         $becario->retencion_final = $datos->final;
         $becario->save();
+
+        /*Reportes*/
+        $reportes = new retenido_has_users();
+        $reportes->id_retenido = $datos->id;
+        $reportes->id_users = $request->users_id;
+        $reportes->tipo_accion_id = 13;
+        $reportes->save();
+
 
         return redirect()->route('retencion.perfil',$request->id_datos_personales);
     }

@@ -301,7 +301,118 @@ SELECT
                 INNER JOIN actualizacion_periodo E
                 ON(A.actualizacion_periodo_id=E.id)
                 INNER JOIN datos_personales F
-                ON(E.id_datos_personales=F.id)                    ;                         
+                ON(E.id_datos_personales=F.id)
+       UNION ALL
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(C.nombre,' a ',E.estado,' ' ) as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM estado_estudios_has_users A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN estado_estudios E
+                ON(A.estado_estudios_id=E.id)
+                INNER JOIN datos_personales F
+                ON(E.datos_personales_id=F.id)
+
+        UNION ALL 
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM users_has_practica A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN practica E
+                ON(A.practica_id=E.id)
+                INNER JOIN datos_personales F
+                ON(E.datos_personales_id=F.id)
+         UNION ALL 
+ 
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(C.nombre, 'Fecha Inicio: ',E.inicio,'/ Fecha Final: ', E.final )as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM retenido_has_users A
+                INNER JOIN users B
+                ON(A.id_users=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN retenido E
+                ON(A.id_retenido=E.id)
+                INNER JOIN datos_personales F
+                ON(E.id_datos_personales=F.id)
+         UNION ALL
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(c.nombre,' de ', A.universidad, ' a ',K.abreviatura, ' del Becario(a) ' ) as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM cambio_universidad_has_users A
+                INNER JOIN users B
+                ON(A.users_id = B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)                
+                INNER JOIN datos_personales F
+                ON(A.datos_personales_id=F.id)
+                INNER JOIN datos_personales_has_carreras G
+                ON(G.id_datos_personales=F.id)
+                INNER JOIN carreras H
+                ON(G.carrera_id=H.id)
+                INNER JOIN facultad I
+                ON(H.facultad_id=I.id)
+                INNER JOIN campus J
+                ON(I.campus_id=J.id)
+                INNER JOIN universidad K
+                ON(J.universidad_id=K.id)
+     
+      UNION ALL
+
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM creacion_becarios_has_users A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)                
+                INNER JOIN datos_personales F
+                ON(A.datos_personales_id=F.id)                       
+
              ");
            return view("user/bitacora")->with('acciones',$acciones);
     }

@@ -8,6 +8,8 @@ use App\Datos_personales;
 use DB;
 use App\Practica;
 use App\Estado_estudios;
+use App\Reportes\estado_estudios_has_users;
+use App\Reportes\users_has_practica;
 
 class EstatusController extends Controller
 {
@@ -72,6 +74,13 @@ class EstatusController extends Controller
             $becario->estado_estudios=$estado_estudios->estado;
             $becario->fecha_estado_estudios= $estado_estudios->created_at;
             $becario->save();
+
+            /*Reporte*/
+            $reporte = new estado_estudios_has_users();
+            $reporte->estado_estudios_id=$estado_estudios->id;
+            $reporte->users_id= $request->users_id;
+            $reporte->tipo_accion_id= 11;
+            $reporte->save(); 
         }else{
 
           if($request->file('expediente')) { 
@@ -90,12 +99,22 @@ class EstatusController extends Controller
             $practica->estado ='Activo';
             $practica->save();
 
+
+
             /*lleno informacion en los datos personales*/
             $becario->practica = $practica->nombre;
             $becario->practica_inicio = $practica->inicio;
             $becario->practica_fin =  $practica->final;
             $becario->estado_practica = 'Activo';
-            $becario->save();            
+            $becario->save();
+
+
+            /*Reporte*/
+            $reporte = new users_has_practica();
+            $reporte->practica_id=$practica->id;
+            $reporte->users_id= $request->users_id;
+            $reporte->tipo_accion_id= 12;
+            $reporte->save();             
         }
 
         return redirect()->route('estatus.perfil',$request->datos_personales_id);

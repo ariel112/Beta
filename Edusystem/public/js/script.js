@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-$('#estatus').dataTable();
+/*$('#estatus1').dataTable();*/
 
 
 $('.estirar-boton').attr('placeholder',' Buscar...');

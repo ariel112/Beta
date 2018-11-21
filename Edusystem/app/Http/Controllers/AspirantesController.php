@@ -23,6 +23,10 @@ use App\Estado_estudios;
 use App\Genero;
 use App\Digitalizacion_documentos;
 use Illuminate\Database\Eloquent\Collection;
+use App\Reportes\cambio_universidad_has_users;
+use App\Reportes\creacion_becarios_has_users;
+
+
 class AspirantesController extends Controller
 {
     /**
@@ -142,8 +146,9 @@ class AspirantesController extends Controller
      */
     public function store(Request $request)
     {  
-        $madreID=0;
-        $padreID=0;
+        $carbon=Carbon::now(); 
+        $madreID=null;
+        $padreID=null;
  
         if($request->nombre_madre!=null){
         /*Datos de la madre*/        
@@ -189,7 +194,7 @@ class AspirantesController extends Controller
         $aspirante->cuenta_universitaria=$request->cuenta_universitaria;
         /*lleno informacion en los datos personales*/
         $aspirante->estado_estudios='Activo';
-        $aspirante->fecha_estado_estudios= $padre->created_at;        
+        $aspirante->fecha_estado_estudios= $carbon;        
         $aspirante->save();
           
 
@@ -215,6 +220,12 @@ class AspirantesController extends Controller
         $estado_estudio->datos_personales_id=$aspirante->id;
         $estado_estudio->save();
 
+        /*Reportes*/
+        $reportes = new creacion_becarios_has_users();
+        $reportes->datos_personales_id = $aspirante->id;
+        $reportes->users_id=$request->users_id;
+        $reportes->tipo_accion_id= 15;
+        $reportes->save();    
           
 
         return redirect()->route('aspirantes.perfil',$aspirante->id);
@@ -414,9 +425,37 @@ class AspirantesController extends Controller
 
     public function updateUniversidad(Request $request, $id){
        /*Datos de la carrera*/
-        $carrera = Datos_personales_has_carreras::find($request->idd_carrera);        
-        $carrera->carrera_id=$request->carrera_id;
-        $carrera->save();
+       $carrera = Datos_personales_has_carreras::find($request->idd_carrera);        
+       $carrera->carrera_id=$request->carrera_id;
+       $carrera->save();
+
+       $abreviatura = DB::select("
+                SELECT E.abreviatura as abreviatura
+                        FROM datos_personales_has_carreras A
+                        INNER JOIN carreras B 
+                        ON(A.carrera_id=B.id)
+                        INNER JOIN facultad C
+                        ON(B.facultad_id=C.id)
+                        INNER JOIN campus D
+                        ON(C.campus_id=D.id)
+                        INNER JOIN universidad E
+                        ON(D.universidad_id=E.id)
+                        WHERE A.id='$request->idd_carrera';
+         ");
+
+       foreach ($abreviatura as $datos) {
+           $data =$datos->abreviatura;
+       }
+
+       /*REPORTES*/
+       $reportes = new cambio_universidad_has_users();
+       $reportes->datos_personales_id=$carrera->id_datos_personales;
+       $reportes->users_id=$request->users_id;
+       $reportes->Universidad=$data;
+       $reportes->tipo_accion_id= 14;       
+       $reportes->save();
+     
+        
     return redirect()->route('index.cambiouniversidad');
     }
 
@@ -491,6 +530,12 @@ class AspirantesController extends Controller
         $carrera->carrera_id=$request->carrera_id;
         $carrera->save();*/
 
+        /*Reportes*/
+        $reportes = new creacion_becarios_has_users();
+        $reportes->datos_personales_id = $id;
+        $reportes->users_id=$request->users_id;
+        $reportes->tipo_accion_id= 16;
+        $reportes->save();  
     
 
         return redirect()->route('aspirantes.index');

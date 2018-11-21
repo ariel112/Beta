@@ -9,7 +9,7 @@ class Pagos_retenido extends Model
     protected $table= "retenido";
     protected $fillable = 
     [
-    	'id_retenido',
+    	'id',
     	'id_datos_personales',
     	'descripcion',
     	'inicio',

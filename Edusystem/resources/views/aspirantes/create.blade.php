@@ -67,7 +67,7 @@ function valida(e){
  			 {!! Form::open(['route' => 'aspirantes.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
   		
  					   <div align="center"><h2>INFORMACIÓN DEL(LA) ESTUDIANTE </h2> </div>	
-                    
+                    <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Numero de identidad:
                             </label>

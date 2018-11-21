@@ -12,10 +12,8 @@
                     <h2>Perfil del becario (Estatus)</h2>                    
                     <div class="clearfix"></div>
                   </div>
-
                   <div class="x_content">
 					
-
                 <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   @if($becario->genero==1)
@@ -23,7 +21,6 @@
                   @else
                   <div class="x_title"><img class="imagen-aspirantes " src="{{asset('images/estudentF.png')}}">
                   @endif
-
                     <div align="center">
                   <h2 class="mt-3">{{$becario->nombre}}</h2>
                   </div>
@@ -50,8 +47,6 @@
                         </li>
                          <li><a href="#beca" data-toggle="tab">Datos Becas 20/20</a>
                         </li>
-                       
-                      
                       </ul>
                     </div>
 
@@ -85,7 +80,7 @@
                         </div>
                         <div class="tab-pane" id="profile">
                             <p class="lead">Información de Practica</p>
-                                  <table id="estatus" class="table table-striped table-bordered">
+                                  <table id="estatus1" class="table table-striped table-bordered">
                                   <thead>
                                     <tr>
                                     <th class="alinear" >Documento</th>
@@ -117,34 +112,23 @@
                                 <div class="col-md-6  ">
                                     <h2>Tipo de becario: </h2><p>{{$becario->beca}}</p>
                                     <h2>Cargo: </h2><P>{{$becario->cargo}}</P>
-                                    <h2>otros: </h2><p>otro tipo de informacion</p>
-                                                             
+                                    <h2>otros: </h2><p>otro tipo de informacion</p>                                                             
                                   </div>
                         </div>
                         <div class="tab-pane" id="doc">
-                            <p class="lead">Documentos Digitales</p>
-                                
-                                
-
-
+                            <p class="lead">Documentos Digitales</p> 
                         </div>
                         <div class="tab-pane" id="messages">
-                            <p class="lead">Persona dependiente</p>
-                            
-                            <div class="container mt-3">
-                      
+                            <p class="lead">Persona dependiente</p>                           
+                            <div class="container mt-3">                      
                                 Nombre Completo: <p>{{$becario->nombreDependiente}}</p>
                                 Identidad: <p>{{$becario->identidadDependiente}}</p>
-                                celular: <p>{{$becario->celularDependiente}}</p>
-                        
+                                celular: <p>{{$becario->celularDependiente}}</p>                        
                              </div>
                         </div>
                         <div class="tab-pane" id="ficha">
-                            <p class="lead">Ficha de Información del Solicitante</p>
-                            
-                           
-                        </div>
-                      
+                            <p class="lead">Ficha de Información del Solicitante</p> 
+                        </div>                      
                         <div class="tab-pane" id="settings">
                             <p class="lead">Datos Familiares</p>
                             <div class="padre">
@@ -164,9 +148,7 @@
                         </div>
                       </div>
                     </div>
-
                     <div class="clearfix"></div>
-
                   </div>
                 </div>
               </div>
@@ -183,7 +165,7 @@
 
 
 {!! Form::open(['route' => ['estatus.store'], 'method'=>'POST', 'files'=>true]) !!}
-
+<input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

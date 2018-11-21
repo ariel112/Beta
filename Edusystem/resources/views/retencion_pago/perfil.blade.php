@@ -15,12 +15,8 @@
                     <h2>Perfil del becario Para la retención del pago</h2>                    
                     <div class="clearfix"></div>
                   </div>
-
-
                   <div class="x_content">
-					
-
-                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   @if($becario->genero==1)
                   <div class="x_title"><img class="imagen-aspirantes " src="{{asset('images/estudentM.png')}}">
@@ -30,11 +26,8 @@
 
                     <div align="center">
                   <h2 class="mt-3">{{$becario->nombre}}</h2>
-                  </div>
-                  
+                  </div>                  
                     <ul class="nav navbar-right panel_toolbox">
-                     
-                  
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -191,10 +184,6 @@
                 </div>
               </div>
 
-                    
-
-                	
-                
                   </div>
                 </div>
 </div>
@@ -210,20 +199,20 @@
       <div class="modal-header" align="center">
         <h5 class="modal-title" id="exampleModalLabel">Retencion de pagos</h5>
         <h3>RETENCIÓN DE PAGO</h3>
-     
+     <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">  
       </div>
       <div class="modal-body">
       	<div class="form-group">
             <label for="recipient-name" class="col-form-label">Descripcion:</label>
-            <textarea name="descripcion" class="form-control"></textarea>
+            <textarea name="descripcion" class="form-control" required></textarea>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Fecha Inicio:</label>
-            <input type="date" name="inicio" class="form-control" style="width: 260px;">
+            <input type="date" name="inicio" class="form-control" style="width: 260px;" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Fecha Final:</label>
-            <input type="date" name="final" class="form-control" style="width: 260px;">
+            <input type="date" name="final" class="form-control" style="width: 260px;" required>
           </div>       
         </form>
       </div>
@@ -244,7 +233,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
@@ -259,6 +248,20 @@
     <script type="text/javascript" src="{{asset('template/vendors/jszip/dist/jszip.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+
+
+        <!-- Switchery -->
+    <script type="text/javascript" src="{{asset('template/vendors/switchery/dist/switchery.min.js')}}"></script>
+    <!-- Select2 -->
+    <script type="text/javascript" src="{{asset('template/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <!-- Parsley -->
+    <script type="text/javascript" src="{{asset('template/vendors/parsleyjs/dist/parsley.js')}}"></script>
+    <!-- Autosize -->
+    <script type="text/javascript" src="{{asset('template/vendors/autosize/dist/autosize.min.js')}}"></script>   
+    <!-- jQuery autocomplete -->
+    <script type="text/javascript" src="{{asset('template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
+    <!-- starrr -->
+    <script type="text/javascript" src="{{asset('template/vendors/starrr/dist/starrr.js')}}"></script> 
 
 
 @endsection

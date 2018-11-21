@@ -13,32 +13,22 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Busqueda Global retencion de pagos</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                     
-                     
+                    <ul class="nav navbar-right panel_toolbox">                                           
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-
-
-                  <div class="x_content">
-                
+                  <div class="x_content">                
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                        <th class="alinear" >Imagen</th>
-                        <th>Nombre</th>
-                        <th>Identidad</th>
-                        <th>Telefono</th>                      
-                        <th class="alinear"> Editar</th>
+                            <th class="alinear" >Imagen</th>
+                            <th>Nombre</th>
+                            <th>Identidad</th>
+                            <th>Telefono</th> 
                         </tr>
                       </thead>
-
-
                       <tbody>
-                         @foreach($datos as $dato)
+                        @foreach($datos as $dato)
                                 <tr>
                                     @if($dato->genero==1)
                                     <td class="center">
@@ -55,20 +45,14 @@
                                     @endif
                                     <td>{{$dato->nombre}}</td>
                                     <td>{{$dato->identidad}}</td>
-                                    <td>{{$dato->celular}}</td>                                    
-                                    <td class="alinear"><img class="center-imagen" width="50" height="50" src="{{asset('images/editar.png')}}"></td>
-                            
+                                    <td>{{$dato->celular}}</td>                             
                                 </tr>
-                        @endforeach
-                               
-
-                      
+                        @endforeach                      
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
-
 </div>
 @endsection
 
@@ -76,7 +60,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

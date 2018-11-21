@@ -65,9 +65,9 @@ function valida(e){
                     
                 
  			 {!! Form::open(['route' => ['update.cambiouniversidad',$aspirante->id], 'method'=>'PUT', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
-  		
+  		        <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
  					   <div align="center"><h2>INFORMACIÓN DEL(LA) ESTUDIANTE </h2> </div> 
-
+             
                           <br>
                           <br>
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>                          
