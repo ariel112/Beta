@@ -66,7 +66,7 @@ function valida(e){
                 
  			 {!! Form::open(['route' => 'Cnombre.store', 'method'=>'POST', 'files'=>true, 'id'=>'formAspi','data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
   		
- 					   <div align="center"><h2>Nombre de la complementaria </h2> </div>	
+ 					  <div align="center"><h2>Nombre de la complementaria </h2> </div>	
             <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}" class="form-control" style="width: 60px;">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre Complementaria:

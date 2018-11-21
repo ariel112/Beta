@@ -167,6 +167,9 @@ Route::get('complementaria/perfil/{id}',
 /*Nombre de las Complementarias*/
 Route::resource('complementaria/Cnombre','NombreComplementariaController');
 
+/*Ruta para guardar cuando se desactive un usuario*/
+Route::get('reporte/desactivo-complementaria/{id}/{id_usuario}','NombreComplementariaController@reporte')->name('reporte.desactivar');
+
 Route::get('complemnetaria/mostrar-nombre',
                        [
                         'as'=>'complementaria.mostrar',

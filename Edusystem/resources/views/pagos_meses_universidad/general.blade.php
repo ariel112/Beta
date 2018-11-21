@@ -4,26 +4,23 @@
 @section('content')
 
    <!-- page content -->
-        <div class="right_col" role="main">
-        
+        <div class="right_col" role="main">        
          
             <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>PAGOS CONVENIOS CORRESPONDIENTES A UNIVERSIDADES <i class="fa fa-university"></i></h2>
-                   
+                  <div  class="x_title">
+                    <div>
+                      <h2> <i class="fa fa-university"></i> PAGOS CONVENIOS CORRESPONDIENTES A UNIVERSIDADES <i class="fa fa-university"></i></h2>
+                      
+                    </div>                   
                     <div class="clearfix"></div>
                   </div>
-                  <div class="fondo-beca" >
-                    <br/>                    
-                
- 			      
-   
-                
-                  <div class="x_content">
 
+                  <div class="fondo-beca" >
+                  <br>
+                  <div class="x_content">
                     <table class="table table-bordered tablas">
                       <thead class="color-tablas">
                         <tr>
@@ -40,9 +37,7 @@
                           <th>SEPTIEMBRE</th>
                           <th>OCTUBRE</th>
                           <th>NOVIEMBRE</th>
-                          <th>DICIEMBRE</th>
-                          
-                          
+                          <th>DICIEMBRE</th>                          
                         </tr>
                       </thead>
                       <tbody>
@@ -63,9 +58,8 @@
                           <td>{{$gene->octubre}}</td>
                           <td>{{$gene->noviembre}}</td>
                           <td>{{$gene->diciembre}}</td> 
-                        </tr>
-             
-@endforeach
+                        </tr>           
+  @endforeach
                       </tbody>
                  </table>
                   </div>
@@ -74,17 +68,12 @@
                   </div>
                 </div>
               </div>
-            </div>
-         
+            </div>         
         </div>
 
-   {{Form::close()}}
-        <!-- /page content -->
 @endsection
 
-
 @section('script')
-
  <!-- Datatables -->
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
@@ -101,6 +90,4 @@
     <script type="text/javascript" src="{{asset('template/vendors/jszip/dist/jszip.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-
-
 @endsection

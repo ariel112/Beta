@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nombre_complementaria;
+use App\Reportes\users_has_nombre_complementaria;
 use DB;
 
 class NombreComplementariaController extends Controller
@@ -50,6 +51,13 @@ class NombreComplementariaController extends Controller
         $nombre = new Nombre_complementaria($request->all());
         $nombre->fecha = $request->fecha.'-01';
         $nombre->save();
+        
+        $reporte = new users_has_nombre_complementaria();
+        $reporte->users_id = $request->users_id;
+        $reporte->nombre_complementaria_id = $nombre->id;       
+        $reporte->tipo_accion_id =7;
+        $reporte->save();        
+
         return redirect()->route('complementaria.mostrar');
     }
 
@@ -66,7 +74,24 @@ class NombreComplementariaController extends Controller
        $nombre->save(); 
        return redirect()->route('complementaria.mostrar');
     }
+    
 
+    public function reporte($id, $id_usuario)
+    {
+        $nombre = Nombre_complementaria::find($id);
+        $nombre->estado ='Desactivo';
+        $nombre->save();
+
+        /*Reporte */
+        $reporte = new users_has_nombre_complementaria();
+        $reporte->users_id = $id_usuario;
+        $reporte->nombre_complementaria_id = $id;       
+        $reporte->tipo_accion_id =8;  
+        $reporte->save();  
+       
+       return redirect()->route('complementaria.mostrar');
+    }
+  
     /**
      * Show the form for editing the specified resource.
      *

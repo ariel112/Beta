@@ -44,15 +44,8 @@ function valida(e){
 @endsection
 
 
-
-
-
-
-
 @section('content')
-			 					
-
-
+			 		
 
 @foreach($becarios as $becario)
 
@@ -64,26 +57,20 @@ function valida(e){
                     <h2>Perfil del becario</h2>                    
                     <div class="clearfix"></div>
                   </div>
-
-
-                  <div class="x_content">
-					
-
-                      <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_content">	
+                  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   @if($becario->genero==1)
                   <div class="x_title"><img class="imagen-aspirantes " src="{{asset('images/estudentM.png')}}">
                   @else
                   <div class="x_title"><img class="imagen-aspirantes " src="{{asset('images/estudentF.png')}}">
                   @endif
-
-                    <div align="center">
-                  <h2 class="mt-3">{{$becario->nombre}}</h2>
+                    
+                  <div align="center">
+                   <h2 class="mt-3">{{$becario->nombre}}</h2>
                   </div>
                   
                     <ul class="nav navbar-right panel_toolbox">
-                     
-                  
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -92,10 +79,7 @@ function valida(e){
                     <div class="col-xs-3">
                       <!-- required for floating -->
                       <!-- Nav tabs -->
-                      <ul class="nav nav-tabs tabs-left">
-
-                       
-
+                      <ul class="nav nav-tabs tabs-left">                        
                         <li class="active"><a href="#home" data-toggle="tab">Actualizacón de documentos</a>
                         </li>
                         <li><a href="#profile" data-toggle="tab">Información Universitaria</a>
@@ -104,20 +88,13 @@ function valida(e){
                         <li><a href="#settings" data-toggle="tab">Datos Familiares</a>
                         </li>
                          <li><a href="#beca" data-toggle="tab">Datos Becas 20/20</a>
-                        </li>
-                        <li><a href="#doc" data-toggle="tab">Expediente</a>
-                        </li>
-                        <li><a href="#ficha" data-toggle="tab">Ficha 01</a>
-                        </li>
-                        <li><a href="#iden" data-toggle="tab">Identidad Digitalizada</a>
-                        </li>
+                        </li>                       
                       </ul>
                     </div>
 
                     <div class="col-xs-9">
                       <!-- Tab panes -->
                       <div class="tab-content">
-
                         <div class="tab-pane active" id="home">             
                          <p class="lead">Actualizacion Documentos</p>                            
                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Actualizar Periodo </button>
@@ -237,42 +214,37 @@ function valida(e){
 
                   </div>
                 </div>
-              </div>
-
-                    
-
-                	
-                
-                  </div>
-                </div>
-</div>
+              </div>                
+             </div>
+        </div>
+   </div>
 </div>
 
 
 
 
-{!! Form::open(['route' => ['actualizacion.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
+{!! Form::open(['route' => ['actualizacion.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate']) !!}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" align="center">
         <h5 class="modal-title" id="exampleModalLabel">Actualización de Documentos</h5>
-        <h3>{{$becario->universidad}}</h3>
-     
+        <h3>{{$becario->universidad}}</h3>     
       </div>
       <div class="modal-body">
-            <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
-           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label" >Seleccione un periodo: 
-                            </label>                           
-                               <select name="calendario_universidad_id"  class="form-control" required>
-                                 <option selected disabled>Seleccione un periodo</option>
-                                @foreach($periodos as $periodo)
-                                 <option value="{{$periodo->id}}">{{$periodo->periodo}}</option>
-                                @endforeach                                                                  
-                              </select>                           
-            </div>
+          <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}"> 
+          <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label" >Seleccione un periodo: 
+            </label>                           
+               <select name="calendario_universidad_id"  class="form-control" required>
+                 <option selected disabled>Seleccione un periodo</option>
+                @foreach($periodos as $periodo)
+                 <option value="{{$periodo->id}}">{{$periodo->periodo}}</option>
+                @endforeach                                                                  
+            </select>                           
+          </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Indice Global:</label>
             <input onkeypress="return valida(event)" maxlength="2" type="text" name="promedio_global" class="form-control" style="width: 60px;" required>
@@ -289,14 +261,9 @@ function valida(e){
       </div>
     </div>
   </div>
-</div>
-
-       
-            {{Form::close()}}
-
- 
+</div>       
+         {{Form::close()}}
 @endforeach
-
 
 @endsection
 
@@ -326,7 +293,7 @@ function valida(e){
 
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

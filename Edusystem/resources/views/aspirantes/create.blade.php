@@ -78,11 +78,32 @@ function valida(e){
                             </div>
                           </div>
 
-                       <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre Completo: 
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Completo: 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text"  name="nombre_completo" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
+                              <input type="text"  name="primer_nombre" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Completo: 
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text"  name="segundo_nombre" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Apellido: 
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text"  name="primer_apellido" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Apellido: 
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text"  name="segundo_apellido" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">
@@ -162,20 +183,7 @@ function valida(e){
                           <br>
                           <br>
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>
-                          <!--
-							             <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nivel Educativo: <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                               <select name="genero" id="heard" class="form-control" required>
-		                          <option selected disabled >Seleccion el nivel educativo:</option>
-		                          <option value="1">Primaria</option>
-		                          <option value="2">Secundaria</option>
-		                          <option value="3">Universidad</option>
-		                        </select> 
-                            </div>
-                          </div>  
-                        -->
+                         
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Universidad:
                             </label>
@@ -219,7 +227,7 @@ function valida(e){
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >Cuenta Universitaria:
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text"  name="cuenta_universitaria" required  onkeypress="return valida(event)" maxlength="11" minlength="11"  class="form-control col-md-7 col-xs-12">
+                              <input type="text"  name="cuenta_universitaria" required  onkeypress="return valida(event)" maxlength="13" minlength="11"  class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">

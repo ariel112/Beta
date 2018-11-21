@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+$('#estatus').dataTable();
+
+
 $('.estirar-boton').attr('placeholder',' Buscar...');
 
 $('.estirar-boton').removeClass('input-sm');

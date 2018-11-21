@@ -11,6 +11,10 @@ class Datos_personales extends Model
     protected $fillable = [
     	'id',
     	'id_cargo',
+        'primer_nombre',
+        'segundo_nombre',
+        'primer_apellido',
+        'segundo_apellido',
     	'id_municipio',
     	'genero',
     	'estado_civil',

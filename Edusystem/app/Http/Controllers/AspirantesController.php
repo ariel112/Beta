@@ -173,7 +173,11 @@ class AspirantesController extends Controller
         $aspirante->id_padre = $padreID;
         $aspirante->id_madre = $madreID;
         $aspirante->identidad= $request->identidad;
-        $aspirante->nombre= $request->nombre_completo;
+        $aspirante->nombre= $request->primer_nombre.' '.$request->segundo_nombre.' '.$request->primer_apellido.' '.$request->segundo_apellido;
+        $aspirante->primer_nombre  = $request->primer_nombre;
+        $aspirante->segundo_nombre = $request->segundo_nombre;
+        $aspirante->primer_apellido = $request->primer_apellido;
+        $aspirante->segundo_apellido = $request->segundo_apellido;
         $aspirante->fecha_nacimiento= $request->fecha_nacimiento;
         $aspirante->ciudad= $request->ciudad;
         $aspirante->celular= $request->telefono_aspirante;

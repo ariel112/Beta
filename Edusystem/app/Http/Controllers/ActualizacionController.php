@@ -21,6 +21,7 @@ use App\Datos_padre;
 use App\persona_dependiente;
 use App\Datos_personales;
 use App\Actualizacion_periodo;
+use App\Reportes\users_has_actualizacion_periodo;
 
 class ActualizacionController extends Controller
 {
@@ -52,12 +53,18 @@ class ActualizacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
         $actualizacion = new Actualizacion_periodo($request->all());
-
         $actualizacion->save();
 
+        /*Reporte*/
+        $reportes = new users_has_actualizacion_periodo();
+        $reportes->users_id =$request->users_id;
+        $reportes->actualizacion_periodo_id= $actualizacion->id;
+        $reportes->tipo_accion_id=9;
+        $reportes->save();
         return redirect()->route('actualizacion.perfil',$request->id_datos_personales);
     }
     /**

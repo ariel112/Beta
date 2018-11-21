@@ -22,6 +22,7 @@
  			      
       {!! Form::open(['route' => ['meses.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}    
                   <input type="text" name="universidad_id" value="{{$universidad->id}}" style="display: none;">
+                  <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
                   <div class="x_content">
 
                     <table class="table table-bordered tablas">
@@ -47,7 +48,7 @@
   
                         <tr>
                           <td>
-                            <select name="enero" class="form-control col-1" required>
+                            <select name="01" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -55,7 +56,7 @@
                             </select> 
                           </td>
                           <td>
-                            <select name="febrero" class="form-control col-1" required>
+                            <select name="02" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -63,7 +64,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="marzo" class="form-control col-1" required>
+                            <select name="03" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -71,7 +72,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="abril" class="form-control col-1" required>
+                            <select name="04" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -79,7 +80,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="mayo" class="form-control col-1" required>
+                            <select name="05" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -87,7 +88,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="junio" class="form-control col-1" required>
+                            <select name="06" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -95,7 +96,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="julio" class="form-control col-1" required>
+                            <select name="07" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -103,7 +104,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="agosto" class="form-control col-1" required>
+                            <select name="8" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -111,7 +112,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="septiembre" class="form-control col-1" required>
+                            <select name="09" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -119,7 +120,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="octubre" class="form-control col-1" required>
+                            <select name="10" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -127,7 +128,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="noviembre" class="form-control col-1" required>
+                            <select name="11" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>
@@ -135,7 +136,7 @@
                             </select>
                           </td>                          
                           <td>
-                            <select name="diciembre" class="form-control col-1" required>
+                            <select name="12" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>

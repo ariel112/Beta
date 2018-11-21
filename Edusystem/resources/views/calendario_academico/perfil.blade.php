@@ -39,8 +39,7 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>Periodo</th>
-                          <th>Observación</th>
+                          <th>Periodo</th>                         
                           <th>Inicio</th>
                           <th>Final</th>
                           <th>Solicitud Convenio</th>
@@ -50,8 +49,7 @@
                       <tbody>
 					@foreach($periodos as $periodo)
                         <tr>
-                          <th scope="row">{{$periodo->periodo}}</th>
-                          <td>{{$periodo->observacion}}</td>
+                          <th scope="row">{{$periodo->periodo}}</th>                         
                           <td>{{$periodo->inicio}}</td>
                           <td>{{$periodo->final}}</td>
                           <td>{{$periodo->solicitud}}</td>

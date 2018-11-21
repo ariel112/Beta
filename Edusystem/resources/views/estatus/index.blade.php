@@ -14,9 +14,7 @@
                   <div class="x_title">
                     <h2>Estatus en el sistema de los becarios</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
+                     
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -84,7 +82,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

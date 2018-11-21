@@ -21,7 +21,8 @@
                 
  	@foreach($pagos as $pago)		      
       {!! Form::open(['route' => ['meses.update',$pago->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}    
-                  
+                   <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
+                   <input type="text" name="universidad_id" style="display: none;" value="{{$pago->universidad_id}}">
                   <div class="x_content">
 
                     <table class="table table-bordered tablas">

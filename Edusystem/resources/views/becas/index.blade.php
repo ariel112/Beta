@@ -30,8 +30,7 @@
                         <tr>                       
                         <th>Nombre</th>
                         <th>Monto</th>
-                        <th>Descripcion</th>                      
-                        <th class="alinear"> Editar</th>
+                        <th>Descripcion</th> 
                         </tr>
                       </thead>
 
@@ -41,9 +40,11 @@
                                     <td>{{$beca->nombre}}</td>
                                     <td>{{$beca->monto}}</td>
                                     <td>{{$beca->descripcion}}</td>                                    
+                                    <!--
                                     <td class="alinear">
                                         <a href="{{route('becas.edit',$beca->id)}}"><img class="center-imagen" src="{{asset('images/edit.png')}}"></a>
-                                    </td>                       
+                                    </td> 
+                                    -->                      
                                 </tr>
                         @endforeach
                       
@@ -60,7 +61,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Universidad;
 use App\Pagos_meses_universidad;
+use App\Reportes\users_has_meses_universidad;
 use DB;
+use Carbon\Carbon;
+
 class PagoMesesController extends Controller
 {
     /**
@@ -52,8 +55,8 @@ class PagoMesesController extends Controller
 
          ");
 
-
-      return view('pagos_meses_universidad/general')->with('general',$general);
+       $carbon=Carbon::now();
+      return view('pagos_meses_universidad/general')->with('general',$general)->with('carbon',$carbon);
 
     }
 
@@ -65,8 +68,19 @@ class PagoMesesController extends Controller
      */
     public function store(Request $request)
     {   
+
         $pagos_meses_universidad= new Pagos_meses_universidad($request->all());
         $pagos_meses_universidad->save();
+        
+        /*Reporte de las acciones de los meses*/  
+        $reporte = new users_has_meses_universidad();
+        $reporte->users_id=$request->users_id;
+        $reporte->pagos_meses_universidad_id= $pagos_meses_universidad->id;
+        $reporte->tipo_accion_id = 5;
+        $reporte->save();
+        
+
+
         return redirect()->route('meses.perfil',$request->universidad_id);  
 
     }
@@ -105,7 +119,8 @@ class PagoMesesController extends Controller
               A.09 as septiembre, 
               A.10 as octubre, 
               A.11 as noviembre, 
-              A.12 as diciembre
+              A.12 as diciembre,
+              A.universidad_id as universidad_id
               
                 FROM pagos_meses_universidad A
                 WHERE A.id='$id';
@@ -127,11 +142,19 @@ class PagoMesesController extends Controller
     {
         
         $mes =Pagos_meses_universidad::find($id);
-
         $mes->fill($request->all());
-         $mes->save();
+        $mes->save();
 
-         return redirect()->route('meses.perfil',$mes->id);
+        /*Reporte de las acciones de los meses*/  
+        $reporte = new users_has_meses_universidad();
+        $reporte->users_id=$request->users_id;
+        $reporte->pagos_meses_universidad_id= $mes->id;
+        $reporte->tipo_accion_id = 6;
+        $reporte->save();
+
+
+
+         return redirect()->route('meses.perfil',$mes->universidad_id);
 
     }
 
@@ -149,7 +172,7 @@ class PagoMesesController extends Controller
     public function perfil($id){
         $pagos = DB::select(" 
             SELECT 
-              A.id, 
+              A.id as id, 
               A.01 as enero, 
               A.02 as febrero, 
               A.03 as marzo, 
@@ -161,10 +184,12 @@ class PagoMesesController extends Controller
               A.09 as septiembre, 
               A.10 as octubre, 
               A.11 as noviembre, 
-              A.12 as diciembre
+              A.12 as diciembre,
+              A.universidad_id as universidad_id,
+              Date_format(A.created_at,'%Y') as anio
               
                 FROM pagos_meses_universidad A
-                WHERE A.universidad_id='$id';
+                WHERE A.universidad_id= '$id';
 
          ");
         $universidad = Universidad::find($id);

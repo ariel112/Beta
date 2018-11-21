@@ -38,6 +38,7 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
+                          <th>Año</th>
                           <th>ENERO</th>
                           <th>FEBRERO</th>
                           <th>MARZO</th>
@@ -57,6 +58,7 @@
                       <tbody>
 	                 @foreach($pagos as $pago)
                         <tr>
+                          <td>{{$pago->anio}}</td>
                           <td>{{$pago->enero}}</td>
                           <td>{{$pago->febrero}}</td>
                           <td>{{$pago->marzo}}</td>

@@ -42,18 +42,20 @@
                                 <tr>
                                     
                                     <td>{{$dato->nombre}}</td>
-                                    <td>{{$dato->fecha}}</td>
-                                    <td>{{$dato->estado}}</td>                                                                       
-                                    <td class="alinear">
-                                        <a href="{{route('Cnombre.show',$dato->id)}}">
-                                          <button class="btn btn-danger">Desactivar</button>
-                                        </a>
-                                    </td>
+                                    <td>{{$dato->fecha}}</td>                                    
+                                    <td>{{$dato->estado}}</td>                                    
+                                    @if($dato->estado=='Activo')                                                                           
+                                      <td class="alinear">
+                                          <a href="{{route('reporte.desactivar',[$dato->id,Auth::user()->id])}}">
+                                            <button class="btn btn-danger">Desactivar</button>
+                                          </a>
+                                      </td>
+                                    @else
+                                    <td></td>
+                                    @endif
                             
                                 </tr>
-                        @endforeach
-                               
-
+                         @endforeach  
                       
                       </tbody>
                     </table>
@@ -68,7 +70,7 @@
 @section('script')
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>

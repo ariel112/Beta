@@ -16,7 +16,7 @@
                   <div class="x_content">
 					
 
-                      <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   @if($becario->genero==1)
                   <div class="x_title"><img class="imagen-aspirantes " src="{{asset('images/estudentM.png')}}">
@@ -50,8 +50,7 @@
                         </li>
                          <li><a href="#beca" data-toggle="tab">Datos Becas 20/20</a>
                         </li>
-                        <li><a href="#doc" data-toggle="tab">Expediente</a>
-                        </li>
+                       
                       
                       </ul>
                     </div>
@@ -86,7 +85,7 @@
                         </div>
                         <div class="tab-pane" id="profile">
                             <p class="lead">Información de Practica</p>
-                                  <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                                  <table id="estatus" class="table table-striped table-bordered">
                                   <thead>
                                     <tr>
                                     <th class="alinear" >Documento</th>
@@ -183,7 +182,7 @@
  
 
 
-{!! Form::open(['route' => ['estatus.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
+{!! Form::open(['route' => ['estatus.store'], 'method'=>'POST', 'files'=>true]) !!}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -226,26 +225,23 @@
             </div>
           </div>
         
-        </form>
+        
       </div>
       <div  class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-         {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}  
+         {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
+         {{Form::close()}}  
       </div>
     </div>
   </div>
 </div>
 
        
-            {{Form::close()}}
-
-
-
-
+            
 
 
   @endforeach
-
+</div>
 @endsection
 
 
@@ -259,17 +255,15 @@
  <!--Este script es para las peticiones con ajax -->
     <script src="{{ asset('js/script.js')}}"></script> 
 
- 
-
 
  <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('template/net-buttons/js/buttons.print.min.js')}}"></script>
+
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
