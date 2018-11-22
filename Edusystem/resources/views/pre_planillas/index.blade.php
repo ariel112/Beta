@@ -19,9 +19,9 @@
                      container">                           
                             <div class="col-md-3 col-sm-3 col-xs-3">
                               @if($nuevo=='NO')
-                              Seleccione la fecha: <input id="mesPrePlanilla"  name="fechaPrePlanilla" class="form-control"  type="date" required >
+                              Seleccione la fecha: <input id="mesPrePlanilla"  name="fechaPrePlanilla" class="form-control"  type="MONTH" required >
                               @else() 
-                              Seleccione la fecha: <input id="mesPrePlanilla" name="fechaPrePlanilla" class="form-control" value="{{$date}}" type="date" required>
+                              Seleccione la fecha: <input id="mesPrePlanilla" name="fechaPrePlanilla" class="form-control" value="{{$date}}" type="MONTH" required>
                               @endif                             
                             </div>
                             <br>

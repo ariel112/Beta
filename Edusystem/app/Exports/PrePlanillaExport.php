@@ -67,7 +67,7 @@ class PrePlanillaExport implements FromCollection, ShouldAutoSize, WithHeadings,
     */
       public function __construct($date)
     {
-        $this->date = $date;
+        $this->date = $date.'-01';
     }
 
 
@@ -119,7 +119,7 @@ class PrePlanillaExport implements FromCollection, ShouldAutoSize, WithHeadings,
 
 
 /*--------------------------- PRIMERO SACO LOS QUE DICEN AMBOS EL PERIODO ---------------------------*/  
-       $BecariosAmbos= DB::select(" 
+        $BecariosAmbos= DB::select(" 
              SELECT 
                    
                    A.periodo as periodo,                  
@@ -137,11 +137,11 @@ class PrePlanillaExport implements FromCollection, ShouldAutoSize, WithHeadings,
                 INNER JOIN universidad F
                 ON(E.universidad_id=F.id)
                 INNER JOIN pagos_meses_universidad G
-                ON(G.universidad_id= F.id)
-                WHERE  ('$numMes' BETWEEN A.inicio AND A.final) 
+                ON(G.universidad_id= F.id) 
+                WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo')
-                        AND ('$numMes' NOT BETWEEN C.retencion_inicio AND C.retencion_final)
+                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
                         AND (". $nueva ."='Ambos Periodo')                           
                             GROUP BY     
                                         A.periodo,
@@ -333,10 +333,10 @@ $data=[];
                 INNER JOIN departamento M
                 ON(L.id_depto=M.id_depto)
 
-                WHERE  ('$numMes' BETWEEN A.inicio AND A.final) 
+                WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo' )
-                        AND ('$numMes' NOT BETWEEN C.retencion_inicio AND C.retencion_final)
+                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
                         AND (" . $nueva . "='Si')                           
                             GROUP BY    A.universidad_id, 
                                         A.periodo, 
@@ -357,8 +357,6 @@ foreach ($data as $key => $value) {
         $info= array_prepend($info,$dato);
     }
 }
-
-
 /*Voy a buscar todos los que estan en practica*/
 $practica= DB::select(" 
              SELECT 
@@ -401,7 +399,7 @@ $practica= DB::select("
                 INNER JOIN departamento M
                 ON(L.id_depto=M.id_depto)
 
-                WHERE    C.estado_practica= 'Activo'
+                WHERE   '$numMes' BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo'
                                                  
                             GROUP BY    A.universidad_id, 
                                         A.periodo, 
@@ -414,7 +412,7 @@ $practica= DB::select("
                                         C.genero,
                                         F.nombre ,
                                         C.celular,
-                                        F.abreviatura ;     
+                                        F.abreviatura ;    
                                          ");
 
     $nuevo = array_merge($preplanilla, $info, $practica);
