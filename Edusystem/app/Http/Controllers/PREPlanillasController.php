@@ -112,11 +112,13 @@ class PREPlanillasController extends Controller
                 INNER JOIN universidad F
                 ON(E.universidad_id=F.id)
                 INNER JOIN pagos_meses_universidad G
-                ON(G.universidad_id= F.id) 
+                ON(G.universidad_id= F.id)
+                INNER JOIN retenido HH
+                ON(HH.id_datos_personales=C.id) 
                 WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo')
-                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
+                        AND ('$numMes' NOT BETWEEN date_format(HH.inicio,'%Y-%m') AND date_format(HH.final,'%Y-%m'))
                         AND (". $nueva ."='Ambos Periodo')                           
                             GROUP BY     
                                         A.periodo,
@@ -307,11 +309,12 @@ $data=[];
                 ON(K.id_municipio=L.id_municipio)
                 INNER JOIN departamento M
                 ON(L.id_depto=M.id_depto)
-
+                INNER JOIN retenido HH
+                ON(HH.id_datos_personales=C.id) 
                 WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo' )
-                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
+                        AND ('$numMes' NOT BETWEEN date_format(HH.inicio,'%Y-%m') AND date_format(HH.final,'%Y-%m'))
                         AND (" . $nueva . "='Si')                           
                             GROUP BY    A.universidad_id, 
                                         A.periodo, 
