@@ -179,6 +179,10 @@ class ActualizacionController extends Controller
                             WHERE A.id='$id';
          ");
 
+        foreach ($becarios as $datos) {
+          $data= $datos->id_universidad;
+        }
+
         $actualizacions = DB::select("
                 SELECT 
                 B.id AS idd, 
@@ -204,7 +208,7 @@ class ActualizacionController extends Controller
                          A.periodo AS periodo,  
                          Date_format(A.inicio,'%Y') AS anio
                 FROM calendario_universidad A
-                WHERE A.universidad_id= 1 AND Date_format(A.inicio,'%Y') = YEAR(NOW())
+                WHERE A.universidad_id= '$data' AND Date_format(A.inicio,'%Y') = YEAR(NOW())
                     ) AA
                 LEFT JOIN (
                 SELECT b.calendario_universidad_id as id_universidad, b.id_datos_personales as datos_personales
