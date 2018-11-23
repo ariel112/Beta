@@ -49,7 +49,7 @@ class BecaController extends Controller
         $reporte->tipo_accion_id = 1;
         $reporte->becas_id= $becas->id; 
         $reporte->save();
-       return redirect()->route('becas.index'); 
+       return redirect()->route('becas.index')->with('success','Beca creada con exito!!'); 
     }
 
     /**

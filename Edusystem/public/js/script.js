@@ -2,6 +2,10 @@ $(document).ready(function(){
 
 /*$('#estatus1').dataTable();*/
 
+/**/
+$('.alert').fadeIn().delay(3000).fadeOut();
+
+
 
 $('.estirar-boton').attr('placeholder',' Buscar...');
 
@@ -291,7 +295,7 @@ function onperiodo(id){
 
  } 
   //AJAX
-  $.get('/api/periodos/'+id+'/university', function(data){
+  $.get('/api/periodos/'+id+'/verifica', function(data){
     var html_select1 =' <option selected disabled >Seleccione un periodo </option>';
     for (var i=0; i<data.length; ++i)
       html_select1 += '<option value="'+data[i].nombre+'">'+data[i].nombre +'</option>'

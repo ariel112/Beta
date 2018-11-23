@@ -606,5 +606,31 @@ class AspirantesController extends Controller
 
 
 
+    public function byverificaperiodos($id){
+
+        return DB::select("   
+                SELECT AA.periodo as nombre
+                FROM (
+                    SELECT X.id, X.nombre, X.abreviatura, z.nombre as periodo, Date_format(NOW(),'%Y') AS anio
+                    FROM  universidad X
+                    INNER JOIN periodo_universidad Z
+                    ON(X.id=Z.universidad_id)
+                    WHERE X.id='$id'
+                    ) AA
+                LEFT JOIN (
+                    
+                    SELECT A.id,A.nombre, A.abreviatura, B.periodo, Date_format(B.created_at,'%Y') AS anio
+                    FROM universidad A
+                    INNER JOIN calendario_universidad B
+                    ON(A.id=B.universidad_id)
+                    WHERE A.id='$id' AND Date_format(B.created_at,'%Y')=Date_format(NOW(),'%Y')
+                   )BB
+                ON(AA.id=BB.id)
+                WHERE BB.id IS NULL;   
+         ");
+    }
+
+
+
 
 }

@@ -50,7 +50,7 @@ class CalendarioController extends Controller
        $reporte->calendario_universidad_id=$calendario->id;
        $reporte->tipo_accion_id=3;
        $reporte->save();
-       return redirect()->route('calendario.academico');        
+       return redirect()->route('universidad.perfil',$request->universidad_id)->with('success','Calendario creado con exito!!');        
 
     }
 
@@ -125,7 +125,7 @@ class CalendarioController extends Controller
        $reporte->save();
     
 
-        return redirect()->route('universidad.perfil',$request->universidad_id);
+        return redirect()->route('universidad.perfil',$request->universidad_id)->with('warning','Calendario editado con exito!!');
     }
 
 

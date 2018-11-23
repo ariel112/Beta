@@ -25,3 +25,5 @@ Route::get('/periodos/{id}/university', 'AspirantesController@byperiodos');
 Route::get('/preplanilla/{date}/pago','PREPlanillasController@preplanilla' );
 Route::get('/identidad/{identidad}/respuesta','AspirantesController@byrespuesta');
 Route::get('/complementaria/{complementaria}/respuesta','AspirantesController@bycomplementaria');
+
+Route::get('/periodos/{id}/verifica','AspirantesController@byverificaperiodos');

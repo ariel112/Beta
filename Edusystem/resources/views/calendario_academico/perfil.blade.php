@@ -15,6 +15,7 @@
                       </li>                     
                     </ul>
                     <div class="clearfix"></div>
+                     @include('flash-message')
                   </div>
                   <div class="x_content">
                 

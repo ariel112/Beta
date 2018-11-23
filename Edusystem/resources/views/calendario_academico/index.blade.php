@@ -26,7 +26,7 @@
                             <select id="universidad" name="universidad_id" class="form-control" required>
     		                      <option selected disabled>Seleccione la universidad</option>
                                   @foreach($universidades as $universidad)
-                                  <option value="{{$universidad->id}}">{{$universidad->nombre}}</option>                             
+                                  <option value="{{$universidad->id}}">{{$universidad->nombre}} ({{$universidad->abreviatura}})</option>                             
                                   @endforeach    
     		                      </select>
                             </div>

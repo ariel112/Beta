@@ -171,13 +171,13 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>           
-              <a data-toggle="tooltip" data-placement="top" title="Logout"  href="{{ route('logout') }}" onclick="event.preventDefault();                                                
-                                                     document.getElementById('logout-form').submit();">
+              <a data-toggle="tooltip" data-placement="top" title="Logout"  href="{{ route('logout') }}" onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
                    <span class="glyphicon glyphicon-off" aria-hidden="true">                           
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                       </form>                           
-                    </span>
+                   </span>
              </a>
               
             </div>
@@ -236,9 +236,12 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-     
+       
+              
+          
+      
           @yield('content')
-     
+          
         <!-- /page content -->
 
         <!-- footer content -->

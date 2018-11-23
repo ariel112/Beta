@@ -44,7 +44,7 @@
                                             <img class="center-imagen" width="80" height="80" src="/logo-universidades/{{$universidad->url_imagen}}">
                                         </a>    
                                     </td>
-                                    <td class="alinear" >{{$universidad->nombre}}</td>
+                                    <td class="alinear" >{{$universidad->nombre}} ({{$universidad->abreviatura}})</td>
                              
                                 </tr>
 
