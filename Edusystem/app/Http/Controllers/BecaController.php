@@ -40,8 +40,10 @@ class BecaController extends Controller
      */
     public function store(Request $request)
     {   
-        $becas = new Becas($request->all());
-        $becas->save();
+        if( isset($request) ) {
+                $becas = new Becas($request->all());
+                $becas->save();
+        }
 
         /*Parte de la informacion del reporte*/
         $reporte = new users_has_becas();

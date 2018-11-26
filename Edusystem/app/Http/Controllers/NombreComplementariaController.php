@@ -24,7 +24,8 @@ class NombreComplementariaController extends Controller
         $nombres = Nombre_complementaria::all();
         $nombres= DB::select("
         SELECT id, users_id, nombre,  Date_format(fecha,'%Y-%m') as fecha, estado
-            FROM nombre_complementaria; 
+            FROM nombre_complementaria
+            ORDER BY fecha DESC; 
             ");   
         return view('nombre_complementaria.mostrar')->with('nombres',$nombres);
     }
@@ -48,17 +49,19 @@ class NombreComplementariaController extends Controller
      */
     public function store(Request $request)
     {          
-        $nombre = new Nombre_complementaria($request->all());
-        $nombre->fecha = $request->fecha.'-01';
-        $nombre->save();
-        
+        if( isset($request) ) {
+                $nombre = new Nombre_complementaria($request->all());
+                $nombre->fecha = $request->fecha.'-01';
+                $nombre->save();
+                              }
+
         $reporte = new users_has_nombre_complementaria();
         $reporte->users_id = $request->users_id;
         $reporte->nombre_complementaria_id = $nombre->id;       
         $reporte->tipo_accion_id =7;
         $reporte->save();        
 
-        return redirect()->route('complementaria.mostrar');
+        return redirect()->route('complementaria.mostrar')->with('success','Pago meses creado con exito!!');;
     }
 
     /**
@@ -72,7 +75,7 @@ class NombreComplementariaController extends Controller
        $nombre = Nombre_complementaria::find($id);
        $nombre->estado ='Desactivo'; 
        $nombre->save(); 
-       return redirect()->route('complementaria.mostrar');
+       return redirect()->route('complementaria.mostrar')->with('error','Desactivado con exito!!');
     }
     
 
@@ -89,7 +92,7 @@ class NombreComplementariaController extends Controller
         $reporte->tipo_accion_id =8;  
         $reporte->save();  
        
-       return redirect()->route('complementaria.mostrar');
+       return redirect()->route('complementaria.mostrar') ->with('error','Desactivado con exito!!');
     }
   
     /**

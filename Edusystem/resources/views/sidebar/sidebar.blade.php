@@ -79,20 +79,20 @@
                           <li><a href="{{route('calendario.academico')}}"><i class="fa fa-university"></i> Universidades</a></li>                           
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-money"></i> Pago Meses Convenios<span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-money"></i> List. Anual Por Univ.<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('meses.index')}}"><i class="fa fa-search"></i> Buscar Universidad</a></li>
                           <li><a href="{{route('meses.create')}}"><i class="fa fa-circle-o-notch"></i>Busqueda General</a></li>
                         </ul>
                     </li> 
                     <ul class="nav side-menu">
-                    <li><a><i class="fa fa-graduation-cap"></i> Becas <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-graduation-cap"></i> Gestión de Becas <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('becas.create')}}"><i class="fa fa-plus"></i> Crear Beca </a></li>
                           <li><a href="{{route('becas.index')}}"><i class="fa fa-search"></i> Becas disponibles</a></li>                           
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-font"></i>Nombre complementaria<span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-list"></i>Gestión de complementaria<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('Cnombre.create')}}"><i class="fa fa-plus"></i>Añadir </a></li>
                           <li><a href="{{route('complementaria.mostrar')}}"><i class="fa fa-search"></i>Buscar </a></li>

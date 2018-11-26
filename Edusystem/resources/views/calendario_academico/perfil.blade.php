@@ -24,6 +24,7 @@
                   	<div align="center">
                   		<h2>{{$universidad->nombre}}</h2>
                  		<h4>{{$universidad->abreviatura}}</h4>
+
                  		<img class="center-imagen" width="100" height="100" src="/logo-universidades/{{$universidad->url_imagen}}">
                   	</div>
 				<br>
@@ -56,7 +57,15 @@
                           <td>{{$periodo->inicio}}</td>
                           <td>{{$periodo->final}}</td>
                           <td>{{$periodo->solicitud}}</td>
-                       	  <th><a href="{{route('calendario.edit',$periodo->id)}}"><button type="button" class="btn btn-round btn-warning">Editar</button></a></th>		
+                          @if($periodo->anio==$anio)
+                          <td>
+                            <a href="{{route('calendario.edit',$periodo->id)}}"><button type="button" class="btn btn-round btn-warning">Editar</button></a>
+                          </td>
+                          @else
+                          <td>
+                          NO DISPONIBLE                           
+                          </td>
+                          @endif                       	 	
                         </tr>
                     @endforeach   
 

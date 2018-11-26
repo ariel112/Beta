@@ -55,10 +55,11 @@ class ActualizacionController extends Controller
      */
     
     public function store(Request $request)
-    {
+    {   
+       if( isset($request) ) {
         $actualizacion = new Actualizacion_periodo($request->all());
         $actualizacion->save();
-
+         } 
         /*Reporte*/
         $reportes = new users_has_actualizacion_periodo();
         $reportes->users_id =$request->users_id;

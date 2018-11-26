@@ -104,7 +104,7 @@
                             </select>
                           </td>
                           <td>
-                            <select name="8" class="form-control col-1" required>
+                            <select name="08" class="form-control col-1" required>
                                 <option selected disabled>Seleccione..</option>
                                 <option value="SI">SI</option>
                                 <option value="NO">NO</option>

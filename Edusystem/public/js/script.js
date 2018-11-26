@@ -324,21 +324,25 @@ $('#estatus').click(function () {
     $('#final').attr('required', 'true');
     $('#archivo').attr('required', 'true');
     $('#descripcion').removeAttr('required');
-    $('#descripcion-estado').fadeOut('fast');     
+    $('#descripcion-estado').fadeOut('fast');
+    $('#registrarE').fadeIn();     
    }
    if($estatus=='Activo' || $estatus=='Inactivo' || $estatus=='Egresado'){
     $('#descripcion').attr('required', 'true');
     $('#inicio').removeAttr('required');
     $('#final').removeAttr('required');
     $('#archivo').removeAttr('required');
-
     $('#tiempo-practica').fadeOut('slow');
     $('#descripcion-estado').fadeIn('slow');
+
+    $('#registrarE').fadeIn();
    }
     
 });
 
-
+    $('#registrarE').click(function(event) {
+          $('#registrarE').fadeOut();
+    });
 
 /*----------------------------------Verifica la que el becario no exista-------------------------------------------------------------------------*/
 

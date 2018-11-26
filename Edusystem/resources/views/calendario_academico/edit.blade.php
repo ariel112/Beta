@@ -28,21 +28,21 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Selecione fecha de inicio:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="date" value="{{$calendario->inicio}}" name="inicio" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date" min="{{$carbon}}" value="{{$calendario->inicio}}" name="inicio" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Selecione fecha final:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-3">
-                              <input type="date" value="{{$calendario->final}}" name="final" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date" min="{{$carbon}}" value="{{$calendario->final}}" name="final" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                             <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Solicitud del convenio:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-3">
-                              <input type="date" value="{{$calendario->solicitud_convenio}}"  name="solicitud_convenio" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date" min="{{$carbon}}" value="{{$calendario->solicitud_convenio}}"  name="solicitud_convenio" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>                
                   

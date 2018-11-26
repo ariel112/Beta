@@ -60,19 +60,19 @@ function valida(e){
                     <br/>
  			 {!! Form::open(['route' => ['becas.update',$beca->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate','class'=>'form-horizontal form-label-left']) !!}
  			 			 <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">		                 
-                          <div align="center"><h2>Beca Nueva</h2></div>                         
+                          <div align="center"><h2>Editar Beca</h2></div>                         
                            <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre:
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" value="{{$beca->nombre}}"  name="nombre" required="required" onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
+                              <input type="text" value="{{$beca->nombre}}"  name="nombre" required="required"  class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Monto:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="text" value="{{$beca->monto}}"  name="monto" required="required" onkeypress="return valida(event)" class="form-control col-md-7 col-xs-12">
+                              <input type="text" value="{{$beca->monto}}" maxlength="10"  name="monto" required="required" onkeypress="return valida(event)" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">

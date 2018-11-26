@@ -247,11 +247,11 @@ function valida(e){
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Indice Global:</label>
-            <input onkeypress="return valida(event)" maxlength="2" type="text" name="promedio_global" class="form-control" style="width: 60px;" required>
+            <input onkeypress="return valida(event)" maxlength="3" type="text" name="promedio_global" class="form-control" style="width: 60px;" required>
           </div>
           <div class="form-group" >
             <label for="message-text" class="col-form-label">Indice del periodo:</label>
-            <input onkeypress="return valida(event)" maxlength="2" type="text" name="promedio_periodo" class="form-control " style="width: 60px;" required>
+            <input onkeypress="return valida(event)" maxlength="3" type="text" name="promedio_periodo" class="form-control " style="width: 60px;" required>
           </div>
         </form>
       </div>
@@ -309,5 +309,29 @@ function valida(e){
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
+  
+    <!--Este script es para las peticiones con ajax -->
+    <script src="{{ asset('js/script.js')}}"></script> 
 
+    <script type="text/javascript" src="{{asset('template/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script type="text/javascript" src="{{asset('template/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script> 
+    <script type="text/javascript" src="{{asset('template/vendors/google-code-prettify/src/prettify.js')}}"></script>    
+    <!-- jQuery Tags Input -->
+    <script type="text/javascript" src="{{asset('template/vendors/jquery.tagsinput/src/jquery.tagsinput.js')}}"></script>
+
+    
+
+    <!-- Switchery -->
+    <script type="text/javascript" src="{{asset('template/vendors/switchery/dist/switchery.min.js')}}"></script>
+    <!-- Select2 -->
+    <script type="text/javascript" src="{{asset('template/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <!-- Parsley -->
+    <script type="text/javascript" src="{{asset('template/vendors/parsleyjs/dist/parsley.js')}}"></script>
+    <!-- Autosize -->
+    <script type="text/javascript" src="{{asset('template/vendors/autosize/dist/autosize.min.js')}}"></script>   
+    <!-- jQuery autocomplete -->
+    <script type="text/javascript" src="{{asset('template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
+    <!-- starrr -->
+    <script type="text/javascript" src="{{asset('template/vendors/starrr/dist/starrr.js')}}"></script> 
 @endsection

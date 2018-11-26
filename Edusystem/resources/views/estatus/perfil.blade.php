@@ -211,7 +211,7 @@
       </div>
       <div  class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-         {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
+          <button type="submit" class="btn btn-success" id="registrarE" style="display: none;">Registrar</button> 
          {{Form::close()}}  
       </div>
     </div>

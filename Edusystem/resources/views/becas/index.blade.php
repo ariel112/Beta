@@ -1,10 +1,6 @@
 @extends('sidebar.sidebar')
 
 @section('link')
- 
-
-
-
 @endsection    
 @section("content")
 <div class="right_col" role="main">
@@ -18,7 +14,6 @@
                     <div class="clearfix"></div>
                     @include('flash-message')
                   </div>
-
 
                   <div class="x_content" >
                 
@@ -37,11 +32,11 @@
                                     <td>{{$beca->nombre}}</td>
                                     <td>{{$beca->monto}}</td>
                                     <td>{{$beca->descripcion}}</td>                                    
-                                    <!--
+                                    
                                     <td class="alinear">
                                         <a href="{{route('becas.edit',$beca->id)}}"><img class="center-imagen" src="{{asset('images/edit.png')}}"></a>
                                     </td> 
-                                    -->                      
+                                                      
                                 </tr>
                         @endforeach
                       

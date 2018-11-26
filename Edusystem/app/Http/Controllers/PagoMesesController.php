@@ -68,10 +68,10 @@ class PagoMesesController extends Controller
      */
     public function store(Request $request)
     {   
-
-        $pagos_meses_universidad= new Pagos_meses_universidad($request->all());
-        $pagos_meses_universidad->save();
-        
+        if( isset($request) ) {
+            $pagos_meses_universidad= new Pagos_meses_universidad($request->all());
+            $pagos_meses_universidad->save();
+        }
         /*Reporte de las acciones de los meses*/  
         $reporte = new users_has_meses_universidad();
         $reporte->users_id=$request->users_id;
@@ -81,7 +81,7 @@ class PagoMesesController extends Controller
         
 
 
-        return redirect()->route('meses.perfil',$request->universidad_id);  
+        return redirect()->route('meses.perfil',$request->universidad_id)->with('success','Pago Meses creado con exito!!');  
 
     }
 
@@ -154,7 +154,7 @@ class PagoMesesController extends Controller
 
 
 
-         return redirect()->route('meses.perfil',$mes->universidad_id);
+         return redirect()->route('meses.perfil',$mes->universidad_id)->with('warning','Pago Meses editado con exito!!');
 
     }
 

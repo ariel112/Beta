@@ -20,6 +20,7 @@
                      
                     </ul>
                     <div class="clearfix"></div>
+                    @include('flash-message')
                   </div>
 
 
