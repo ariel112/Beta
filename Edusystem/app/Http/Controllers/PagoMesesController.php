@@ -170,6 +170,9 @@ class PagoMesesController extends Controller
     }
 
     public function perfil($id){
+        $carbon=Carbon::now();
+        $anio =  $carbon->format("Y");
+
         $pagos = DB::select(" 
             SELECT 
               A.id as id, 
@@ -192,8 +195,9 @@ class PagoMesesController extends Controller
                 WHERE A.universidad_id= '$id';
 
          ");
+       
         $universidad = Universidad::find($id);
-        return view('pagos_meses_universidad/perfil')->with('universidad',$universidad)->with('pagos',$pagos);
+        return view('pagos_meses_universidad/perfil')->with('universidad',$universidad)->with('pagos',$pagos)->with('anio',$anio);
 
     }
 }

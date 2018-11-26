@@ -24,8 +24,18 @@
                  		<img class="center-imagen" width="100" height="100" src="/logo-universidades/{{$universidad->url_imagen}}">
                   	</div>
 				<br>
-				<br> 
-               &nbsp;&nbsp;&nbsp;<a href="{{route('meses.show',$universidad->id)}}"><button class="btn btn-success">Agregar nuevo</button></a>   
+				<br>
+         
+        @if(count($pagos)==0)
+         &nbsp;&nbsp;&nbsp;<a href="{{route('meses.show',$universidad->id)}}"><button class="btn btn-success">Agregar nuevo</button>
+        @else  
+            @foreach($pagos as $pago)
+                  @if($pago->anio==$anio)              
+                  @else
+                   &nbsp;&nbsp;&nbsp;<a href="{{route('meses.show',$universidad->id)}}"><button class="btn btn-success">Agregar nuevo</button></a> 
+                  @endif   
+            @endforeach
+        @endif    
                <div  class="col-md-12 col-sm-12 col-xs-12 ">
                 <div class="x_panel">
                   <div class="x_title">
@@ -70,8 +80,18 @@
                           <td>{{$pago->septiembre}}</td>
                           <td>{{$pago->octubre}}</td>
                           <td>{{$pago->noviembre}}</td>
-                          <td>{{$pago->diciembre}}</td>                  
-                          <th><a href="{{route('meses.edit',$pago->id)}}"><button type="button" class="btn btn-round btn-warning">Editar</button></a></th>		
+                          <td>{{$pago->diciembre}}</td>
+                          @if($pago->anio==$anio)
+                          <td>
+                             <a href="{{route('meses.edit',$pago->id)}}">
+                              <button type="button" class="btn btn-round btn-warning">Editar mes</button>
+                            </a>
+                          </td>
+                          @else
+                          <td>
+                          NO DISPONIBLE                           
+                          </td>
+                          @endif
                         </tr>
                    @endforeach
 

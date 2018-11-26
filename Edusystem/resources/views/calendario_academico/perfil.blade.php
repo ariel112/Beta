@@ -40,6 +40,7 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
+                          <th>Codigo</th>
                           <th>Periodo</th>                         
                           <th>Inicio</th>
                           <th>Final</th>
@@ -50,7 +51,8 @@
                       <tbody>
 					@foreach($periodos as $periodo)
                         <tr>
-                          <th scope="row">{{$periodo->periodo}}</th>                         
+                          <th scope="row">{{$periodo->id}}</th>
+                          <td >{{$periodo->periodo}}</td>                         
                           <td>{{$periodo->inicio}}</td>
                           <td>{{$periodo->final}}</td>
                           <td>{{$periodo->solicitud}}</td>
