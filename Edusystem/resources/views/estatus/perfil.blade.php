@@ -164,8 +164,7 @@
  
 
 
-{!! Form::open(['route' => ['estatus.store'], 'method'=>'POST', 'files'=>true]) !!}
-<input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -175,6 +174,8 @@
      
       </div>
       <div class="modal-body">
+        {!! Form::open(['route' => ['estatus.store'], 'method'=>'POST', 'files'=>true]) !!}        
+        <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">
             <input type="text" name="datos_personales_id" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
             <input type="text" name="identidad" style="display: none;" value="{{$becario->identidad}}" class="form-control" style="width: 60px;">
 

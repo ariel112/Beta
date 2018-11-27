@@ -192,6 +192,8 @@ class AspirantesController extends Controller
         $aspirante->genero= $request->id_genero;
         $aspirante->becas_id=$request->becas_id;
         $aspirante->cuenta_universitaria=$request->cuenta_universitaria;
+        $aspirante->retencion_inicio='2015-05-05';
+        $aspirante->retencion_final='2015-06-05';
         /*lleno informacion en los datos personales*/
         $aspirante->estado_estudios='Activo';
         $aspirante->fecha_estado_estudios= $carbon;        

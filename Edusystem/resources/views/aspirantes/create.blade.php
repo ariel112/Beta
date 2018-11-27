@@ -79,14 +79,14 @@ function valida(e){
                           </div>
 
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Completo: 
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Nombre: 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <input type="text"  name="primer_nombre" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Completo: 
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Nombre: 
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <input type="text"  name="segundo_nombre" required  onkeypress="return soloLetras(event)" class="form-control col-md-7 col-xs-12">
@@ -227,23 +227,10 @@ function valida(e){
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >Cuenta Universitaria:
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text"  name="cuenta_universitaria" required  onkeypress="return valida(event)" maxlength="13" minlength="11"  class="form-control col-md-7 col-xs-12">
+                              <input type="text"  name="cuenta_universitaria" required  onkeypress="return valida(event)" maxlength="13" minlength="4"  class="form-control col-md-7 col-xs-12">
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Indice del Periodo:
-                            </label>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                              <input type="text"  name="indice_periodo" required maxlength="2" minlength="2" onkeypress="return valida(event)" class="form-control col-md-3 col-xs-3">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Indice Global:
-                            </label>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                              <input type="text"  name="indice_global" required maxlength="2" minlength="2" onkeypress="return valida(event)" class="form-control col-md-3 col-xs-3">
-                            </div>
-                          </div>
+                          </div>                      
+                         
                             <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Seleccione:</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">                                                         

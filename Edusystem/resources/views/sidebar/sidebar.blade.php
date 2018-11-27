@@ -98,7 +98,7 @@
                           <li><a href="{{route('complementaria.mostrar')}}"><i class="fa fa-search"></i>Buscar </a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-refresh"></i> Actualización <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-refresh"></i>Actualización de Periodo <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
                         </ul>

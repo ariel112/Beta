@@ -105,7 +105,8 @@ function valida(e){
                                     <th>año</th>
                                     <th>Indice Global</th>
                                     <th>Indice del periodo</th>
-                                     <th>Observación</th>
+                                    <th>Observación</th>
+                                    <th>Editar</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -121,8 +122,8 @@ function valida(e){
                                                 <td style="color: red;">Reprobado</td> 
                                                 @else
                                                 <td style="color: green;">Aprobado</td> 
-                                                @endif 
-                                                                                      
+                                                @endif
+                                                <td><a href="{{route('actualizacion.edit',$actualizacion->id_actualizacion)}}" class="btn btn-warning">Editar</a> </td>                           
                                             </tr>
                                      @endforeach       
                                   </tbody>
@@ -223,7 +224,6 @@ function valida(e){
 
 
 
-{!! Form::open(['route' => ['actualizacion.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate']) !!}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -233,6 +233,8 @@ function valida(e){
         <h3>{{$becario->universidad}}</h3>     
       </div>
       <div class="modal-body">
+
+          {!! Form::open(['route' => ['actualizacion.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate']) !!}
           <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}"> 
           <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
           <div class="form-group">

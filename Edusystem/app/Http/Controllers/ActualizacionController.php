@@ -86,8 +86,12 @@ class ActualizacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {  
+        $actualizacion = Actualizacion_periodo::find($id);        
+        //17 edito el periodo        
+      
+      
+        return view('actualizacion.edit')->with('actualizacion',$actualizacion);  
     }
 
     /**
@@ -99,7 +103,19 @@ class ActualizacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $actualizacion =  Actualizacion_periodo::find($id);        
+        $actualizacion->promedio_periodo=$request->promedio_periodo;
+        $actualizacion->promedio_global=$request->promedio_global;     
+        $actualizacion->save();
+
+         /*Reporte*/
+        $reportes = new users_has_actualizacion_periodo();
+        $reportes->users_id =$request->users_id;
+        $reportes->actualizacion_periodo_id= $actualizacion->id;
+        $reportes->tipo_accion_id=17;
+        $reportes->save();
+        return redirect()->route('actualizacion.perfil',$request->id_datos_personales);
+
     }
 
     /**
@@ -190,7 +206,8 @@ class ActualizacionController extends Controller
                 B.periodo AS periodo, 
                 Date_format(B.inicio,'%Y') AS anio, 
                 A.promedio_global AS globals ,
-                A.promedio_periodo AS periodos
+                A.promedio_periodo AS periodos,
+                A.id AS id_actualizacion
             FROM actualizacion_periodo A
             INNER JOIN calendario_universidad B
             ON(A.calendario_universidad_id= B.id)
@@ -217,8 +234,7 @@ class ActualizacionController extends Controller
                 WHERE b.id_datos_personales = '$id'
                     ) BB
                     ON(AA.id=BB.id_universidad)
-                    WHERE BB.id_universidad IS NULL
-                    ;
+                    WHERE BB.id_universidad IS NULL;
          ");
 
         
