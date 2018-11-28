@@ -19,7 +19,7 @@ class CalendarioController extends Controller
      */
     public function index()
     {   $carbons=Carbon::now();
-        $carbon = $carbons->format("Y").'-01-01';
+        $carbon = $carbons->format("Y");
         
         $universidades = Universidad::all();       
         return view('calendario_academico.index')->with('universidades',$universidades)->with('carbon',$carbon);   

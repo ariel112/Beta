@@ -42,7 +42,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Solicitud del convenio:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-3">
-                              <input type="date" min="{{$carbon}}" value="{{$calendario->solicitud_convenio}}"  name="solicitud_convenio" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date" min="{{$carbon}}" value="{{$calendario->solicitud_convenio}}" name="solicitud_convenio" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>                
                   
@@ -53,9 +53,9 @@
                         <div class="ln_solid"></div>
                         <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">                        
-                               {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}                          
+                               {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!} 
                           </div>
-                        </div>    
+                        </div> 
                       </div>
                   {{Form::close()}}
                   </div>

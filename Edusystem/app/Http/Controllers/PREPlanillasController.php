@@ -116,8 +116,10 @@ class PREPlanillasController extends Controller
                 WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo')
-                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
-                        AND (". $nueva ."='Ambos Periodo')                           
+                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m') )
+                        AND (('$numMes' NOT BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo') OR C.estado_practica IS NULL ) 
+                        AND (". $nueva ."='Ambos Periodo')                       
+
                             GROUP BY     
                                         A.periodo,
                                         B.id_datos_personales,
@@ -128,14 +130,12 @@ class PREPlanillasController extends Controller
 
 
 $data=[];   
-                
+              
  foreach ($BecariosAmbos as $becario) {
   
                    
     if($becario->periodo=='II Periodo'){
-         $row= DB::select("
-                   
-                
+         $row= DB::select("                                   
                 SELECT 
                     a.id,
                     A.universidad_id, 
@@ -220,7 +220,7 @@ $data=[];
             ");
            $data[]=$row;      
     }
-     $row=[];                
+               
     if($becario->periodo=='IV Periodo'){
          $row= DB::select("
                     
@@ -310,6 +310,7 @@ $data=[];
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo' )
                         AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
+                        AND (('$numMes' NOT BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo') OR C.estado_practica IS NULL ) 
                         AND (" . $nueva . "='Si')                           
                             GROUP BY    A.universidad_id, 
                                         A.periodo, 
@@ -334,9 +335,7 @@ foreach ($data as $key => $value) {
 $practica= DB::select(" 
              SELECT 
                    A.universidad_id, 
-                   A.periodo, 
-                   A.inicio,
-                   A.final,
+                  
                    B.id_datos_personales,
                    C.nombre,
                    M.departamento,
@@ -358,8 +357,7 @@ $practica= DB::select("
                 ON(E.universidad_id=F.id)
                 INNER JOIN pagos_meses_universidad G
                 ON(G.universidad_id= F.id)
-
-                 INNER JOIN datos_personales_has_carreras H
+                INNER JOIN datos_personales_has_carreras H
                 ON(C.id=H.id_datos_personales)
                 INNER JOIN carreras I
                 ON(H.carrera_id=I.id)
@@ -374,9 +372,7 @@ $practica= DB::select("
                 WHERE   '$numMes' BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo'
                                                  
                             GROUP BY    A.universidad_id, 
-                                        A.periodo, 
-                                        A.inicio,
-                                        A.final,
+                                      
                                         B.id_datos_personales,
                                         C.nombre,
                                         M.departamento,
@@ -387,17 +383,7 @@ $practica= DB::select("
                                         F.abreviatura ;    
                                          ");
 
-    $compara= array_merge($preplanilla, $info);
-    $compara1= [];
-    foreach ($practica as $value1) {
-    foreach ($compara as $value2) {
-                if ($value2 === $value1){
-                      array_push($compara, $value2);
-                } else {
-                   
-                }
-            }
-        }
+
 
      $nuevo = array_merge($preplanilla, $info,$practica);
 

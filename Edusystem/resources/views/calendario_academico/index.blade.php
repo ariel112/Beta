@@ -45,21 +45,21 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-3" for="last-name">Selecione fecha de inicio:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="date" name="inicio" required="required" min="{{$carbon}}" class="form-control col-md-3 col-xs-3">
+                              <input type="date" name="inicio" required="required" id="calendario_inicio" class="form-control col-md-3 col-xs-3">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Selecione fecha final:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="date" id="last-name" name="final" min="{{$carbon}}" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date" id="last-name" name="final" required="required" id="calendario_final" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                             <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Solicitud del convenio:
                             </label>
                             <div class="col-md-2 col-sm-2 col-xs-2">
-                              <input type="date"  name="solicitud_convenio" min="{{$carbon}}" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="date"  name="solicitud_convenio" required="required" id="calendario_solicitud" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>                          
                           </div>
@@ -68,8 +68,8 @@
                         <div class="ln_solid"></div>
                         <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">                      
-                             <button class="btn btn-primary" type="reset">Limpiar Formulario</button>
-                               {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}                           
+                             <!--<button class="btn btn-primary" type="reset">Limpiar Formulario</button>-->
+                               {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btn_calendario' ]) !!}                    
                           </div>
                         </div>    
                       </div>

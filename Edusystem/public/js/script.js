@@ -299,7 +299,7 @@ function onperiodo(id){
     var html_select1 =' <option selected disabled >Seleccione un periodo </option>';
     for (var i=0; i<data.length; ++i)
       html_select1 += '<option value="'+data[i].nombre+'">'+data[i].nombre +'</option>'
-     
+       //$('#btn_calendario').fadeIn();
       $('#periodo').html(html_select1);
   });
 
@@ -325,7 +325,7 @@ $('#estatus').click(function () {
     $('#archivo').attr('required', 'true');
     $('#descripcion').removeAttr('required');
     $('#descripcion-estado').fadeOut('fast');
-    $('#registrarE').fadeIn();     
+    //$('#registrarE').fadeIn();     
    }
    if($estatus=='Activo' || $estatus=='Inactivo' || $estatus=='Egresado'){
     $('#descripcion').attr('required', 'true');
@@ -335,15 +335,19 @@ $('#estatus').click(function () {
     $('#tiempo-practica').fadeOut('slow');
     $('#descripcion-estado').fadeIn('slow');
 
-    $('#registrarE').fadeIn();
+    //$('#registrarE').fadeIn();
    }
     
 });
 
-    $('#registrarE').click(function(event) {
-          $('#registrarE').fadeOut();
-    });
+    /*$('#registrarE').click(function(event) {
+          $('#registrarE').fadeOut().delay(5000).fadeIn();
+    });*/
 
+
+ $('#btn_calendario').click(function(event) {
+      $('#btn_calendario').fadeOut().delay(5000).fadeIn();
+});
 /*----------------------------------Verifica la que el becario no exista-------------------------------------------------------------------------*/
 
 function onrespuesta(identidad){
@@ -355,7 +359,7 @@ function onrespuesta(identidad){
               $("#respuesta_id").css({'border':'2px solid #3edc3e'});
                          $('#sp_id').fadeOut();
                          $('#sp_si').fadeIn();
-                console.log('la identidad No existe exite');
+   
                 } 
                 else{
                       var dato =data[0].respuesta; 
@@ -363,14 +367,14 @@ function onrespuesta(identidad){
                          $("#respuesta_id").css({'border':'2px solid red'});
                          $('#sp_id').fadeIn();
                          $('#sp_si').fadeOut();
-                      console.log('la identidad ya exite');
+                     // console.log('la identidad ya exite');
                                      }
                    }
 
               });
 
   }else{
-              console.log('Nada');
+             // console.log('Nada');
             
 
         }
@@ -415,3 +419,5 @@ function oncomplementaria(fecha){
         }
 
 }
+
+
