@@ -192,9 +192,10 @@ $('#respuesta_id').blur(function(event){
 /*codigo para ver los periodos por universidad*/
 $('#complementaria').change(function(event){
    var complementaria = event.target.value;
-
+   var id_complementaria= $('#datos_personales_id').val(); 
   fecha =$('#fecha-'+complementaria).val();
-   oncomplementaria(fecha);
+  
+   oncomplementaria(fecha,id_complementaria);
 });
 /*
 $('#generar_preplanilla').click(function(){
@@ -385,12 +386,12 @@ function onrespuesta(identidad){
 
 /*-------------------------------------------------codigo para cargar si estoy en complementaria------------------------------------------*/
 
-function oncomplementaria(fecha){
+function oncomplementaria(fecha,id_complementaria){
 
   if(fecha){
 
-      $.get('/api/complementaria/'+fecha+'/respuesta', function(data){     
-        if( Object.keys(data).length === 0 ) {
+      $.get('/api/complementaria/'+fecha+'/'+id_complementaria+'/respuesta', function(data){     
+        if( Object.keys(data).length == 0 ) {
               $("#complementaria12").css({'border':'2px solid #3edc3e'});
                          $('#sp_fecha').fadeOut();
                          $('#sp_fecha_si').fadeIn();

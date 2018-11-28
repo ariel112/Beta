@@ -132,21 +132,90 @@ function valida(e){
 
                         <div class="tab-pane" id="profile">
                             <p class="lead">Información Universitaria</p>
-                                <div class="col-md-6  ">
-                                    <h2>Universidad: </h2><p>{{$becario->universidad}}</p>
-                                    <h2>Campus: </h2><P>{{$becario->campus}}</P>
-                                    <h2>Facultad: </h2><p>{{$becario->facultad}}</p>
-                                    <h2>Carrera: </h2><p>{{$becario->carrera}}</p>
-                                    <h2>Cuenta: </h2> <p>{{$becario->cuenta_universitaria}}</p>                           
-                                  </div>
+                                <table id="datatable" class="table table-striped table-bordered">
+                                  <thead>
+                                    <tr>
+                                    <th class="alinear" >Universidad</th>
+                                    <th>Campus</th>
+                                    <th>Facultad</th>
+                                    <th>Carrera</th>
+                                    <th>Cuenta</th>                                   
+                                    </tr>
+                                  </thead>
+                                  <tbody>                                  
+                                            <tr>                                              
+                                                <td class="center">                                                    
+                                                   {{$becario->universidad}}
+                                                </td>
+                                                <td>{{$becario->campus}}</td>
+                                                <td>{{$becario->facultad}}</td>
+                                                <td>{{$becario->carrera}}</td>                                            
+                                                <td>{{$becario->cuenta_universitaria}}</td>  
+                                            </tr>
+                                        
+                                  </tbody>
+                                </table>
+                                      
+
                         </div>
                         <div class="tab-pane" id="beca">
-                            <p class="lead">Información de la Beca</p>
-                                <div class="col-md-6  ">
-                                    <h2>Tipo de becario: </h2><p>{{$becario->beca}}</p>
-                                    <h2>Cargo: </h2><P>{{$becario->cargo}}</P>
-                                    <h2>otros: </h2><p>otro tipo de informacion</p>                                                         
-                                  </div>
+
+
+                           <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="x_panel">
+                                <div class="x_title">
+                                  <h2>Información de la <small>Beca</small></h2>                
+                                  <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                  <ul class="list-unstyled timeline">
+                                    @if($becario->beca!='')
+                                    <li>
+                                      <div class="block">
+                                        <div class="tags">
+                                          <a href="" class="tag">
+                                            <span>Beca:</span>
+                                          </a>
+                                        </div>
+                                        <div class="block_content">
+                                          <h2 class="title">
+                                                      {{$becario->beca}}
+                                          </h2>                                          
+                                          
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    @else
+
+                                    @endif
+                                     @if($becario->cargo!='')
+                                    <li>
+                                      <div class="block">
+                                        <div class="tags">
+                                          <a href="" class="tag">
+                                            <span>Cargo:</span>
+                                          </a>
+                                        </div>
+                                        <div class="block_content">
+                                      
+                                         
+                                          <p class="excerpt">
+                                          {{$becario->cargo}}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                     @else
+
+                                    @endif                                  
+                                  </ul>
+
+                                </div>
+                              </div>
+                            </div>
+
+                           
                         </div>
                         <div class="tab-pane" id="doc">
                             <p class="lead">Documentos Digitales</p>
@@ -175,7 +244,9 @@ function valida(e){
                                                 <td>Aprobado</td>                                        
                                             </tr>
                                   </tbody>
-                                </table>                        </div>
+                                </table>                        
+                        </div>
+
                         <div class="tab-pane" id="ficha">
                             <p class="lead">Ficha de Información del Solicitante</p>
                             
@@ -185,28 +256,80 @@ function valida(e){
                               </h2>                          
                              </div>
                         </div>
+
                         <div class="tab-pane" id="iden">
                             <p class="lead">Identidad digitalizada</p>                            
                             <div class="container mt-3">                               
                                 <h2>Identidad: <img class="center-imagen" width="50" height="50" src="{{asset('img/pdf.png')}}"><h2>                        
                              </div>
                         </div>
+
                         <div class="tab-pane" id="settings">
-                            <p class="lead">Datos Familiares</p>
-                            <div class="padre">
-                            Padre
-                            <hr>
-                                Nombre Completo: <p>{{$becario->nombrePadre}}</p>
-                                Identidad: <p>{{$becario->identidadPadre}}</p>
-                                celular: <p>{{$becario->celularPadre}}</p> 
-                                </div> 
-                        <div class="madre">
-                            Madre
-                            <hr>
-                        Nombre Completo: <p>{{$becario->nombreMadre}}</p>
-                        Identidad: <p>{{$becario->identidadMadre}}</p>
-                        celular: <p>{{$becario->celularMadre}}</p>
+                           
+
+           <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Datos <small>Familiares</small></h2>                
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <ul class="list-unstyled timeline">
+                    @if($becario->nombrePadre!='')
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>Padre </span>
+                          </a>
                         </div>
+                        <div class="block_content">
+                         <!-- <h2 class="title">
+                                          <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                          </h2> -->
+                          
+                          <h2 class="title">
+                            <p class="excerpt">
+                                  <b>Nombre Completo:</b> <p style="color: gray;">{{$becario->nombrePadre}}</p>
+                                  <b>Identidad:</b> <p style="color: gray;">{{$becario->identidadPadre}}</p>
+                                  <b>celular:</b> <p style="color: gray;">{{$becario->celularPadre}}</p> 
+                            </p>
+                          </h2>
+                        </div>
+                      </div>
+                    </li>
+                    @else
+
+                    @endif
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>Madre</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                        <h2 class="title">
+                               <b>Nombre Completo:</b> <p style="color: gray;">{{$becario->nombreMadre}}</p>
+                               <b>Identidad:</b> <p style="color: gray;">{{$becario->identidadMadre}}</p>
+                               <b>celular:</b> <p style="color: gray;">{{$becario->celularMadre}}</p>
+                          
+                        </h2>
+                         
+                          <p class="excerpt">
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+
+                          
+                      
                         </div>
                       </div>
                     </div>

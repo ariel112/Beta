@@ -175,18 +175,18 @@
      
       </div>
       <div class="modal-body">
-            <input type="text" name="datos_personales_id" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
+            <input type="text" name="datos_personales_id" id="datos_personales_id" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
             <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}" class="form-control" style="width: 60px;">
           
             <div class="form-group">
               <label  class="col-form-label">Observación:</label>
-              <textarea name="observacion" class="form-control"></textarea>
+              <textarea name="observacion" class="form-control" required></textarea>
             </div> 
              
            <div class="form-group" id="complementaria1" >
             <label for="message-text" class="col-form-label">Mes:</label>           
 
-            <select class="form-control" name="nombre_complementaria_id" id="complementaria">
+            <select class="form-control" name="nombre_complementaria_id" id="complementaria" required>
               <option selected disabled >Seleccione la complementaria </option> 
               @foreach($nombres as $nombre)
               <option value="{{$nombre->id}}">{{$nombre->nombre}}</option>
