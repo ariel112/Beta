@@ -14,17 +14,16 @@
  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pre Planilla</h2> 
-                    <div align="center" class="
-                     container">                           
-                            <div class="col-md-3 col-sm-3 col-xs-3">
+                    <h2>Pre Planilla  </h2> 
+                    <div class="container">                          
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                               @if($nuevo=='NO')
-                              Seleccione la fecha: <input id="mesPrePlanilla"  name="fechaPrePlanilla" class="form-control"  type="MONTH" required >
+                              <b>Seleccione la fecha:</b> <input id="mesPrePlanilla"  name="fechaPrePlanilla" class="form-control"  type="MONTH" required >
                               @else() 
-                              Seleccione la fecha: <input id="mesPrePlanilla" name="fechaPrePlanilla" class="form-control" value="{{$date}}" type="MONTH" required>
+                              <b>Seleccione la fecha:</b> <input id="mesPrePlanilla" name="fechaPrePlanilla" class="form-control" value="{{$date}}" type="MONTH" required>
                               @endif                             
                             </div>
-                            <br>
+
                     </div>
    {!! Form::submit('Generar ',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
       @if($nuevo=='NO')

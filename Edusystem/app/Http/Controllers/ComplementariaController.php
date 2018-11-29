@@ -121,8 +121,18 @@ $nombres = DB::select("
                  
            ");
 
+$complementaria = DB::select("
+             SELECT B.nombre AS complementaria, date_format(B.fecha, '%Y-%m' )as mes, A.created_at as fecha, C.name AS usuario
+              FROM planilla_complementaria A
+              INNER JOIN nombre_complementaria B
+              ON(A.nombre_complementaria_id=B.id)
+              INNER JOIN users C
+              ON(A.users_id=C.id)
+              WHERE A.datos_personales_id='$id';
+   ");
 
-        return view('planilla_complementaria/perfil')->with("becarios",$becarios)->with('expedientes',$expedientes)->with('nombres',$nombres); 
+
+        return view('planilla_complementaria/perfil')->with("becarios",$becarios)->with('expedientes',$expedientes)->with('nombres',$nombres)->with('complementaria',$complementaria); 
     }
 
     /**

@@ -128,7 +128,12 @@
                         <ul class="nav child_menu">
                           <li><a href="{{route('index.cambiouniversidad')}}"><i class="fa fa-search"></i>Buscar</a></li> 
                         </ul>
-                    </li>  
+                    </li>
+                    <li><a><i class="fa fa-upload"></i>Cargar Convenios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('convenio.index')}}"><i class="fa fa-search"></i>Buscar</a></li> 
+                        </ul>
+                    </li>   
 
                 @if(Auth::user()->Operaciones()) 
                        <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>

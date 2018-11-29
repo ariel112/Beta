@@ -85,8 +85,7 @@
 
 @section('script')
 
-    <!--Este script es para las peticiones con ajax -->
-    <script src="{{ asset('js/script.js')}}"></script>
+  
     <script type="text/javascript" src="{{asset('template/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
     <!-- bootstrap-wysiwyg -->
     <script type="text/javascript" src="{{asset('template/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script> 
@@ -105,5 +104,6 @@
     <script type="text/javascript" src="{{asset('template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
     <!-- starrr -->
     <script type="text/javascript" src="{{asset('template/vendors/starrr/dist/starrr.js')}}"></script> 
-
+  <!--Este script es para las peticiones con ajax -->
+    <script src="{{ asset('js/script.js')}}"></script>
 @endsection

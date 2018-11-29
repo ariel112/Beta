@@ -207,3 +207,6 @@ Route::get('cambio-index-universidad','AspirantesController@indexcambiouniversid
 
 /*Proceso de llenado de la informacion*/
 Route::PUT('update-cambiouniversidad/{id}','AspirantesController@updateUniversidad')->name('update.cambiouniversidad');
+
+/*IMPORTO LA BASE DE DATOS DESDE EXCEL*/
+Route::post('/import-excel', 'ConvenioController@importFile');

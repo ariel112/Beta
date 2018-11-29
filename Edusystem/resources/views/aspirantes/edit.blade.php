@@ -323,8 +323,7 @@ function valida(e){
 						          <div align="center">
                         <div class="ln_solid"></div>
                         <div class="form-group">
-                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">                      
-                             <button class="btn btn-primary" type="reset">Limpiar Formulario</button>
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                {!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnEmpty' ]) !!}
                            
                           </div>

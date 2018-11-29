@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Universidad;
 use DB;
+use App\Imports\ConvenioImports;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ConvenioController extends Controller
 {
     /**
@@ -15,8 +18,19 @@ class ConvenioController extends Controller
      */
     public function index()
     {
-        //
+        return view('convenio.cargar_convenio');
     }
+
+     public function importFile(Request $request)
+    {
+        
+         Excel::import(new ConvenioImports, $request->excel);
+
+         return redirect('/')->with('success', 'All good!');
+    }
+
+  
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +50,7 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

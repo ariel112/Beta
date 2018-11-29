@@ -1,4 +1,4 @@
-@extends('sidebar.sidebar')
+ @extends('sidebar.sidebar')
 
 @section('link') 
 
@@ -30,7 +30,7 @@
                         <th>Nombre</th>
                         <th>Identidad</th>
                         <th>Telefono</th>                      
-                        <th class="alinear"> Editar</th>
+                        <th class="alinear">Cambio de Universidad</th>
                         </tr>
                       </thead>
 
@@ -56,7 +56,7 @@
                                     <td>{{$dato->celular}}</td>                                    
                                     <td class="alinear">
                                         <a href="{{route('cambio.universidad',$dato->id)}}">
-                                            <img class="center-imagen" width="50" height="50" src="{{asset('images/editar.png')}}">
+                                            <img class="center-imagen" width="50" height="50" src="{{asset('images/editaruni.png')}}">
                                         </a>
                                     </td>
                             

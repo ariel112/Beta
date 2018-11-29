@@ -3,8 +3,8 @@ $(document).ready(function(){
 /*$('#estatus1').dataTable();*/
 
 /**/
-$('.alert').fadeIn().delay(3000).fadeOut();
-
+$('.alert').fadeIn().delay(3000).fadeOut();/*
+$('#estatus11').dataTable();*/
 
 
 $('.estirar-boton').attr('placeholder',' Buscar...');

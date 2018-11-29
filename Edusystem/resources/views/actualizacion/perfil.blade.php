@@ -132,8 +132,8 @@ function valida(e){
 
                         <div class="tab-pane" id="profile">
                             <p class="lead">Información Universitaria</p>
-                                <table id="datatable" class="table table-striped table-bordered">
-                                  <thead>
+                                <table id="datatable" class="table table-striped table-bordered" >
+                                  <thead style="background: #999; color: white;">
                                     <tr>
                                     <th class="alinear" >Universidad</th>
                                     <th>Campus</th>
@@ -154,8 +154,7 @@ function valida(e){
                                             </tr>
                                         
                                   </tbody>
-                                </table>
-                                      
+                                </table>                                      
 
                         </div>
                         <div class="tab-pane" id="beca">
@@ -164,7 +163,7 @@ function valida(e){
                            <div class="col-md-12 col-sm-12 col-xs-12">
                               <div class="x_panel">
                                 <div class="x_title">
-                                  <h2>Información de la <small>Beca</small></h2>                
+                                  <h2>Información de la Beca</h2>                
                                   <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">

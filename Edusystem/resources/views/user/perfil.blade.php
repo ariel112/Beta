@@ -136,7 +136,7 @@
                           </div>
                           <div role="tabpanel2" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
 
-                          <table id="datatable" class="table table-striped table-bordered">
+                          <table id="estatus11" class="table table-striped table-bordered">
                             <thead>
                               <tr>                            
                               <th>Sesiones en el sistema</th>
@@ -276,14 +276,16 @@
 
 
 @section('script')
+
+      <!--Este script es para las peticiones con ajax -->
+    <script src="{{ asset('js/script.js')}}"></script>
     <!-- morris.js -->
     <script type="text/javascript" src="{{asset('template/vendors/raphael/raphael.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/morris.js/morris.min.js')}}"></script>
-    <!--Este script es para las peticiones con ajax -->
-    <script src="{{ asset('js/script.js')}}"></script>
+   
 
     <!-- Datatables -->
-    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>  
+    <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
@@ -298,7 +300,7 @@
     <script type="text/javascript" src="{{asset('template/vendors/jszip/dist/jszip.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-
+   
 
 
     

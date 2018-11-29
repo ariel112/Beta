@@ -1,0 +1,105 @@
+@extends('sidebar.sidebar')
+
+@section('link')
+ 
+
+ <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+@endsection    
+@section("content")
+<div class="right_col" role="main">
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Cargar convenios  </h2> 
+                   
+    <div class="container-fluid">
+    <section class="main row">
+      <article class="col-sm-6 col-md-10">
+        <div class="box box-info"><!-- 'route' => 'registro.store', --> 
+          {{ Form::open (['url' => 'import-excel', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal']) }}
+           <div class="box-body">
+              <div class="form-group"><br>
+                {{ Form::label('fichero', 'Fichero Origen:', ['class' => 'col-sm-4 control-label']) }}
+                <span class="btn btn-default btn-file">
+                  {{ Form::file('excel', ['class' => 'form-control','id' => 'file']) }}
+                </span>
+                <!-- {{ Form::reset('Cancelar', ['class' => 'btn btn-info']) }} -->
+                {{ Form::submit('Subir Fichero', ['class' => 'btn btn-lg btn-primary pull-right', 'id' => 'request', 'onclick' => 'comprueba_extension(this.form, this.form.excel.value)'])}}
+              </div>
+            </div>
+          {{ Form::close() }}
+        </div>
+    
+      </article>
+      <aside class="col-sm-6 col-md-2">
+        <p>
+          1. Ingrese el fichero Excel que se procesara <br><br>
+
+          2. Es necesario que sea un archivo con formato adecuado .xls <br>
+        </p>
+
+        
+      </aside>
+    </section>
+    <div class="row">
+      <div class="container">
+        <table class="table table-hover">
+          <div id="tablecontent"></div>
+        </table>
+      </div>
+      
+      </div>
+  </div>
+
+         
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">                
+                    
+                  </div>
+                </div>
+              </div>
+
+</div>
+@endsection
+
+
+@section('script')
+
+   
+    <!--Este script es para las peticiones con ajax -->
+    <script src="{{ asset('js/script.js')}}"></script> 
+
+ <!-- Datatables -->
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/jszip/dist/jszip.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+
+  <!-- Switchery -->
+    <script type="text/javascript" src="{{asset('template/vendors/switchery/dist/switchery.min.js')}}"></script>
+    <!-- Select2 -->
+    <script type="text/javascript" src="{{asset('template/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <!-- Parsley -->
+    <script type="text/javascript" src="{{asset('template/vendors/parsleyjs/dist/parsley.js')}}"></script>
+    <!-- Autosize -->
+    <script type="text/javascript" src="{{asset('template/vendors/autosize/dist/autosize.min.js')}}"></script>   
+    <!-- jQuery autocomplete -->
+    <script type="text/javascript" src="{{asset('template/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')}}"></script>
+    <!-- starrr -->
+    <script type="text/javascript" src="{{asset('template/vendors/starrr/dist/starrr.js')}}"></script> 
+
+@endsection
