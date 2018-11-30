@@ -16,10 +16,11 @@ class ConvenioImports implements ToModel
     {     
                 
 
-
-
         return  new Temporal_actualizacion_periodo([
            'id_datos_personales' => $row[0],
+           'calendario_universidad_id' => $row[1],
+           'promedio_global' => $row[2],
+           'promedio_periodo' => $row[3]
            
         ]);
     }

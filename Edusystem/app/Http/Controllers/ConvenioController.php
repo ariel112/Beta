@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Universidad;
 use DB;
 use App\Imports\ConvenioImports;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\Temporal_actualizacion_periodo;
 
 class ConvenioController extends Controller
 {
@@ -17,16 +18,20 @@ class ConvenioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('convenio.cargar_convenio');
+    { 
+        $respuesta= 'NO';
+        $temporales = Temporal_actualizacion_periodo::all(); 
+        return view('convenio.cargar_convenio')->with('respuesta',$respuesta)->with('temporales',$temporales);
     }
 
-     public function importFile(Request $request)
-    {
-        
-         Excel::import(new ConvenioImports, $request->excel);
+     public function importFile()
+    {    
+         DB::table('temporal_actualizacion_periodo')->truncate();   
+         $temporales = Temporal_actualizacion_periodo::all();        
+         
+         Excel::import(new ConvenioImports, request()->file('excel'));
 
-         return redirect('/')->with('success', 'All good!');
+         return view('convenio.cargar_convenio')->with('temporales',$temporales);
     }
 
   

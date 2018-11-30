@@ -23,7 +23,7 @@
               <div class="form-group"><br>
                 {{ Form::label('fichero', 'Fichero Origen:', ['class' => 'col-sm-4 control-label']) }}
                 <span class="btn btn-default btn-file">
-                  {{ Form::file('excel', ['class' => 'form-control','id' => 'file']) }}
+                  {{ Form::file('excel', ['class' => 'form-control','id' => 'file','required']) }}
                 </span>
                 <!-- {{ Form::reset('Cancelar', ['class' => 'btn btn-info']) }} -->
                 {{ Form::submit('Subir Fichero', ['class' => 'btn btn-lg btn-primary pull-right', 'id' => 'request', 'onclick' => 'comprueba_extension(this.form, this.form.excel.value)'])}}
@@ -45,9 +45,37 @@
     </section>
     <div class="row">
       <div class="container">
-        <table class="table table-hover">
-          <div id="tablecontent"></div>
-        </table>
+        @if($respuesta=='SI')
+        @else
+         <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                        <th class="alinear" >Identidad</th>
+                        <th>Codigo periodo</th>
+                        <th>Promedio Global</th>
+                        <th>Promedio Periodo</th>                      
+                       
+                        </tr>
+                      </thead>
+
+
+                      <tbody>
+                         @foreach($temporales as $temporal)
+                                <tr>
+                                    
+                                    <td class="center">{{$temporal->id_datos_personales}}</td>                                    
+                                    <td>{{$temporal->calendario_universidad_id}}</td>
+                                    <td>{{$temporal->promedio_global}}</td>
+                                    <td>{{$temporal->promedio_periodo}}</td>                                    
+                                    
+                                </tr>
+                        @endforeach
+                               
+
+                      
+                      </tbody>
+                    </table>
+        @endif
       </div>
       
       </div>
