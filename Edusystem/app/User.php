@@ -66,6 +66,26 @@ class User extends Authenticatable
     }
 
 
+
+   /*roles de operaciones */
+    public function DigitadorOperaciones(){
+     return $this->type==='DIGITADOR OPERACIONES'; 
+    }
+
+
+    public function DigitalizadorOperaciones(){
+     return $this->type==='DIGITALIZADOR OPERACIONES'; 
+    }
+
+    public function OficialOperaciones(){
+     return $this->type==='OFICIAL OPERACIONES'; 
+    }
+
+    public function SupervisorOperaciones(){
+     return $this->type==='SUPERVISOR OPERACIONES'; 
+    }
+
+
   
 
 

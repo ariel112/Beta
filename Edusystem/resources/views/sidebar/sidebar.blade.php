@@ -73,69 +73,97 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                  @if(Auth::user()->OficialOperaciones())   
                     <li><a><i class="fa fa-calendar"></i> Periodos Académicos <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('calendario.index')}}"><i class="fa fa-plus"></i> Agregar Periodos </a></li>
                           <li><a href="{{route('calendario.academico')}}"><i class="fa fa-university"></i> Universidades</a></li>                           
                         </ul>
                     </li>
+
                     <li><a><i class="fa fa-money"></i> List. Anual Por Univ.<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('meses.index')}}"><i class="fa fa-search"></i> Buscar Universidad</a></li>
                           <li><a href="{{route('meses.create')}}"><i class="fa fa-circle-o-notch"></i>Busqueda General</a></li>
                         </ul>
-                    </li> 
-                    <ul class="nav side-menu">
+                    </li>
+
+                    
                     <li><a><i class="fa fa-graduation-cap"></i> Gestión de Becas <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('becas.create')}}"><i class="fa fa-plus"></i> Crear Beca </a></li>
                           <li><a href="{{route('becas.index')}}"><i class="fa fa-search"></i> Becas disponibles</a></li>                           
                         </ul>
                     </li>
+
                     <li><a><i class="fa fa-list"></i>Gestión de complementaria<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('Cnombre.create')}}"><i class="fa fa-plus"></i>Añadir </a></li>
                           <li><a href="{{route('complementaria.mostrar')}}"><i class="fa fa-search"></i>Buscar </a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-refresh"></i>Actualización de Periodo <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-check-square"></i> Estatus Becarios <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-ban"></i>Retención de Pagos<span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="{{route('retencion.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
-                        </ul>
-                    </li>
+
                     <li><a><i class="fa fa-list-alt"></i>Planillas Generales<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('pre_planilla.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                         </ul>
                     </li>
+
                     <li><a><i class="fa fa-list-alt"></i>Plan. Complementarias<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('complementaria.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
                           <li><a href="{{route('complementaria.create')}}"><i class="fa fa-search"></i> Complementarias</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-university"></i>Cambio de Universidad<span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="{{route('index.cambiouniversidad')}}"><i class="fa fa-search"></i>Buscar</a></li> 
-                        </ul>
-                    </li>
+                   
                     <li><a><i class="fa fa-upload"></i>Cargar Convenios<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('convenio.index')}}"><i class="fa fa-search"></i>Buscar</a></li> 
                         </ul>
-                    </li>   
+                    </li>
+                   @endif 
+                   
+                    
+                   
+                    
 
-                @if(Auth::user()->Operaciones()) 
+                  @if(Auth::user()->SupervisorOperaciones()) 
+                     <li><a><i class="fa fa-slideshare"></i>Becarios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">                         
+                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li>
+                        </ul>
+                    </li>
+                  @endif
+
+                @if(Auth::user()->DigitadorOperaciones())
+                 <li><a><i class="fa fa-slideshare"></i>Becarios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('aspirantes.create')}}"><i class="fa fa-plus"></i>Agregar</a></li>
+                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li>
+                        </ul>
+                  </li>
+                  <li><a><i class="fa fa-university"></i>Cambio de Universidad<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('index.cambiouniversidad')}}"><i class="fa fa-search"></i>Buscar</a></li> 
+                        </ul>
+                  </li>
+                  <li><a><i class="fa fa-ban"></i>Retención de Pagos<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('retencion.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
+                        </ul>
+                  </li>
+                  <li><a><i class="fa fa-refresh"></i>Actualización de Periodo <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
+                        </ul>
+                  </li>
+                  <li><a><i class="fa fa-check-square"></i> Estatus Becarios <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
+                        </ul>
+                  </li>     
+                @endif      
+                @if(Auth::user()->Administrador()) 
                        <li><a><i class="fa fa-user"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                           <li><a href="{{route('admin.index')}}">Buscar Usuarios</a></li>                         
@@ -148,15 +176,8 @@
                         </ul>
                       </li>                              
                     </ul>
-                @endif
-                @if(Auth::user()->Operaciones())  
-                       <li><a><i class="fa fa-slideshare"></i> Becarios <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="{{route('aspirantes.create')}}"><i class="fa fa-plus"></i>Agregar</a></li>
-                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li>                         
-                        </ul>
-                      </li>                      
-                    </ul>
+           
+              
                  @endif
 
 

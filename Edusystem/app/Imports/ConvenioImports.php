@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Imports;
-
 use App\Temporal_actualizacion_periodo;
 use Maatwebsite\Excel\Concerns\ToModel;
 

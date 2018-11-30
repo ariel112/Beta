@@ -2,9 +2,6 @@
 
 @section('link')
  <link rel="stylesheet" type="text/css" href="{{asset('Semantic/semantic.min.css')}}">
-
-
-
 @endsection
 
 @section("content")
@@ -22,9 +19,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Reporte de usuario <small>Reporte de actividad</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>                    
+                    <ul class="nav navbar-right panel_toolbox">                                       
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -115,9 +110,9 @@
                                                   <div class="content">
                                                     <div class="summary">
                                                       <a class="user" class="text-capitalize">
-                                                        {{$accion->nombre}} &nbsp;
+                                                        {{$accion->usuario}} &nbsp;
                                                       </a> <font style="color:{{$accion->color}}; ">{{$accion->accion}}</font>&nbsp;&nbsp;
-                                                       <font style="color: gray;">{{$accion->beca}}</font>
+                                                       <font style="color: gray;">{{$accion->nombre}}</font>
                                                       <div class="date">
                                                         {{$accion->fecha}}
                                                       </div>
@@ -235,7 +230,7 @@
           </div>                           
           <div class="modal-body">
                     <div>
-                         {!! Form::open(['route' => ['agregar-estado',$user->id], 'method'=>'PUT', 'files'=>true, 'id'=>'form','data-smk-icon'=>'glyphicon-remove-sign']) !!}      
+                         {!! Form::open(['route' => ['admin.update',$user->id], 'method'=>'PUT', 'files'=>true, 'id'=>'form','data-smk-icon'=>'glyphicon-remove-sign']) !!}      
                            <div class="form-group" >       
                                 {!! Form::label('name','Nombre:' ) !!}
                                 {{$user->name}}                                                     
@@ -245,14 +240,18 @@
                             <div style="width: 195px;">
                               {!! Form::select('type',
                               [
-                              'Gerencia de Formacion y Capacitacion'=> 'Formacion Y Capacitacion',
-                              'Gerencia de Compromiso Social y Juvenil'=>'Compromiso Social y Juvenil',
-                              'Gerencia de Monitoreo y Evaluacion'=>'Gerencia de Monitoreo y Evaluacion',
-                              'Gerencia de Formacion y Liderazgo'=>'Gerencia de Formacion y Liderazgo',
-                              'Gerencia Contabilidad'=>'Gerencia Contabilidad',
-                              'Gerencia Planilla'=>'Gerencia Planilla',
-                              'Operaciones'=>'Operaciones',
-                              'Administrador'=>'Administrador'
+                                'OFICIAL OPERACIONES'=> 'OFICIAL OPERACIONES',
+                                'SUPERVISOR OPERACIONES'=> 'SUPERVISOR OPERACIONES',
+                                'DIGITALIZADOR OPERACIONES'=> 'DIGITALIZADOR OPERACIONES',
+                                'DIGITADOR OPERACIONES'=> 'DIGITADOR OPERACIONES',  
+                                'Gerencia de Formacion y Capacitacion'=> 'Formacion Y Capacitacion',
+                                'Gerencia de Compromiso Social y Juvenil'=>'Compromiso Social y Juvenil',
+                                'Gerencia de Monitoreo y Evaluacion'=>'Gerencia de Monitoreo y Evaluacion',
+                                'Gerencia de Formacion y Liderazgo'=>'Gerencia de Formacion y Liderazgo',
+                                'Gerencia Contabilidad'=>'Gerencia Contabilidad',
+                                'Gerencia Planilla'=>'Gerencia Planilla',
+                                'Operaciones'=>'Operaciones',
+                                'Administrador'=>'Administrador'
                               ]
                                 ,$user->type,
                               ['class'=>'form-control', 'required','placeholder'=>'Seleccione un Cargo', 'id'=>'carg'])!!}
@@ -278,7 +277,7 @@
 @section('script')
 
       <!--Este script es para las peticiones con ajax -->
-    <script src="{{ asset('js/script.js')}}"></script>
+    <script src="{{ asset('js/tabla.js')}}"></script>
     <!-- morris.js -->
     <script type="text/javascript" src="{{asset('template/vendors/raphael/raphael.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('template/vendors/morris.js/morris.min.js')}}"></script>

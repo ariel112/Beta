@@ -30,8 +30,8 @@ class ConvenioController extends Controller
          $temporales = Temporal_actualizacion_periodo::all();        
          
          Excel::import(new ConvenioImports, request()->file('excel'));
-
-         return view('convenio.cargar_convenio')->with('temporales',$temporales);
+$respuesta= 'NO';
+         return view('convenio.cargar_convenio')->with('temporales',$temporales)->with('respuesta',$respuesta);
     }
 
   

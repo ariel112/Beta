@@ -37,7 +37,17 @@ class UserController extends Controller
     public function perfil($id){
 
             $acciones = DB::select("
-              SELECT B.name AS nombre, B.type as type, B.email as email,A.created_at as fecha, C.nombre as accion,E.nombre AS beca, D.color AS color
+             
+
+
+                SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   E.nombre AS nombre,
+   D.color AS color
                 FROM users_has_becas A
                 INNER JOIN users B
                 ON(A.users_id=B.id)
@@ -47,7 +57,206 @@ class UserController extends Controller
                 ON(C.color_id=D.id)
                 INNER JOIN becas E
                 ON(A.becas_id=E.id)
-                WHERE B.id='$id';
+WHERE B.id='$id'
+         UNION ALL       
+               
+SELECT  
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email, 
+   A.created_at as fecha, 
+   C.nombre as accion, 
+   CONCAT(E.periodo, ' ',Date_format(E.inicio,'%Y'),' ',F.abreviatura )AS nombre, 
+   D.color AS color
+                FROM users_has_calendario_universidad A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN calendario_universidad E
+                ON(A.calendario_universidad_id=E.id)
+                INNER JOIN universidad F
+                ON(E.universidad_id=F.id)               
+WHERE B.id='$id'
+        UNION ALL   
+
+SELECT  
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email, 
+   A.created_at as fecha, 
+   C.nombre as accion, 
+   CONCAT(Date_format(E.created_at,'%Y'),' ',F.abreviatura )AS nombre, 
+   D.color AS color
+                FROM  users_has_meses_universidad A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN pagos_meses_universidad E
+                ON(E.id=A.pagos_meses_universidad_id)
+                INNER JOIN universidad F
+                ON(E.universidad_id=F.id)
+WHERE B.id='$id'
+    UNION ALL
+
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   E.nombre AS nombre,
+   D.color AS color
+                FROM users_has_nombre_complementaria A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN nombre_complementaria E
+                ON(A.nombre_complementaria_id=E.id)
+WHERE B.id='$id'
+      UNION ALL 
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM users_has_actualizacion_periodo A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN actualizacion_periodo E
+                ON(A.actualizacion_periodo_id=E.id)
+                INNER JOIN datos_personales F
+                ON(E.id_datos_personales=F.id)
+WHERE B.id='$id'               
+       UNION ALL
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(C.nombre,' a ',E.estado,' ' ) as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM estado_estudios_has_users A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN estado_estudios E
+                ON(A.estado_estudios_id=E.id)
+                INNER JOIN datos_personales F
+                ON(E.datos_personales_id=F.id)
+WHERE B.id='$id'
+        UNION ALL 
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM users_has_practica A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN practica E
+                ON(A.practica_id=E.id)
+                INNER JOIN datos_personales F
+                ON(E.datos_personales_id=F.id)
+WHERE B.id='$id'              
+         UNION ALL 
+ 
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(C.nombre, 'Fecha Inicio: ',E.inicio,'/ Fecha Final: ', E.final )as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM retenido_has_users A
+                INNER JOIN users B
+                ON(A.id_users=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)
+                INNER JOIN retenido E
+                ON(A.id_retenido=E.id)
+                INNER JOIN datos_personales F
+                ON(E.id_datos_personales=F.id)
+WHERE B.id='$id'                
+         UNION ALL
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   CONCAT(c.nombre,' de ', A.universidad, ' a ',K.abreviatura, ' del Becario(a) ' ) as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM cambio_universidad_has_users A
+                INNER JOIN users B
+                ON(A.users_id = B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)                
+                INNER JOIN datos_personales F
+                ON(A.datos_personales_id=F.id)
+                INNER JOIN datos_personales_has_carreras G
+                ON(G.id_datos_personales=F.id)
+                INNER JOIN carreras H
+                ON(G.carrera_id=H.id)
+                INNER JOIN facultad I
+                ON(H.facultad_id=I.id)
+                INNER JOIN campus J
+                ON(I.campus_id=J.id)
+                INNER JOIN universidad K
+                ON(J.universidad_id=K.id)
+ WHERE B.id='$id'   
+      UNION ALL
+
+SELECT 
+   B.name AS usuario, 
+   B.type as type, 
+   B.email as email,
+   A.created_at as fecha, 
+   C.nombre as accion,
+   F.nombre AS nombre,
+   D.color AS color
+                FROM creacion_becarios_has_users A
+                INNER JOIN users B
+                ON(A.users_id=B.id)
+                INNER JOIN tipo_accion c
+                on(A.tipo_accion_id=C.id)
+                INNER JOIN color D 
+                ON(C.color_id=D.id)                
+                INNER JOIN datos_personales F
+                ON(A.datos_personales_id=F.id)
+                WHERE B.id='$id';                       
+
           
              ");
             $depars =  DB::select("                
@@ -145,7 +354,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //
+      
     }
 
 
@@ -179,8 +388,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {      
+          $usuario = User::find($id);
+          $usuario->type = $request->type;
+          $usuario->save();
+
+          return redirect()->route('user.perfil',$id);
     }
 
     /**
@@ -198,8 +411,7 @@ class UserController extends Controller
 
     /*Va a registrar todas las acciones que el usuario haga en el sistema*/
      public function bitacora(){
-           $acciones = DB::select("
-              
+           $acciones = DB::select("              
 SELECT 
    B.name AS usuario, 
    B.type as type, 

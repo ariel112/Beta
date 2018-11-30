@@ -29,21 +29,8 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Tomar fotografia</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
+                   
+                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -64,12 +51,12 @@
                       <div align="center">  
                       {!! Form::open(['route' => ['usuario.fotoTomada',Auth::user()->id],'files'=>true, 'method'=>'POST']) !!}
                        <textarea style="visibility: hidden;" name="base64" id="base64"></textarea>
-                       <input style="visibility: hidden;" type="text" name="id_usuario" value='{{Auth::user()->id}}'>
+                       <input style="visibility: hidden;" type="text" name="id_usuario" value='{{Auth::user()->id}}' required>
                          
                        <!--Ventana de camara para el cel -->
                        <div align="center" id="camara-cel">
                           <i class="fa fa-camera"></i>        
-                          <input  name="image" type="file"  accept="image/*" capture="camera">
+                          <input  name="image" type="file"  accept="image/*" capture="camera" required>
                        </div>
                       <div align="center">
                       {!! Form::submit('Guardar Foto',['class'=>'btn btn-info', 'id'=>'btnInfo']) !!}

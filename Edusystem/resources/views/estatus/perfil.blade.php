@@ -25,8 +25,7 @@
                   <h2 class="mt-3">{{$becario->nombre}}</h2>
                   </div>
                   
-                    <ul class="nav navbar-right panel_toolbox">
-                     
+                    <ul class="nav navbar-right panel_toolbox">                 
                   
                     </ul>
                     <div class="clearfix"></div>
