@@ -33,16 +33,37 @@
         </div>
     
       </article>
+      <div>
+        <a  href="{{route('verifica.identidad')}}" class="btn btn-info">Verificar identidades</a>
+        <a  href="{{route('cargo.convenio')}}" class="btn btn-info">carga convenio</a>
+      </div>
       <aside class="col-sm-6 col-md-2">
         <p>
           1. Ingrese el fichero Excel que se procesara <br><br>
 
-          2. Es necesario que sea un archivo con formato adecuado .xls <br>
+          2. Es necesario que sea un archivo con formato adecuado .xlsx <br>
         </p>
 
         
       </aside>
     </section>
+
+    @foreach($mensaje1 as $mensaje)
+    @if($mensaje->contador==0)
+    @else
+    <p style="color: red;">{{$mensaje->mensaje}}</p>
+    @endif
+    @endforeach
+    
+    @foreach($mensaje2 as $mensaje)
+    @if($mensaje->contador==0)
+    @else
+    <p style="color: red;">{{$mensaje->mensaje}}</p>
+    @endif
+    @endforeach
+    @foreach($mensaje3 as $mensaje)  
+    <p style="color: green;">{{$mensaje->mensaje}}</p>    
+    @endforeach
     <div class="row">
       <div class="container">
         @if($respuesta=='SI')
@@ -61,14 +82,22 @@
 
                       <tbody>
                          @foreach($temporales as $temporal)
-                                <tr>
-                                    
-                                    <td class="center">{{$temporal->id_datos_personales}}</td>                                    
+                              @if($temporal->id_datos_personales=='')
+                                <tr style="color:red;">                                    
+                                    <td class="center">{{$temporal->identidad}}</td>                                    
                                     <td>{{$temporal->calendario_universidad_id}}</td>
                                     <td>{{$temporal->promedio_global}}</td>
-                                    <td>{{$temporal->promedio_periodo}}</td>                                    
-                                    
+                                    <td>{{$temporal->promedio_periodo}}</td> 
                                 </tr>
+                              @else
+                              <tr>                                    
+                                    <td class="center">{{$temporal->identidad}}</td>                                    
+                                    <td>{{$temporal->calendario_universidad_id}}</td>
+                                    <td>{{$temporal->promedio_global}}</td>
+                                    <td>{{$temporal->promedio_periodo}}</td> 
+                                </tr>
+                              @endif  
+
                         @endforeach
                                
 

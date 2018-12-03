@@ -101,8 +101,9 @@ function valida(e){
                                  <table id="datatable" class="table table-striped table-bordered">
                                   <thead>
                                     <tr>
+                                    <th>Universidad</th>  
                                     <th class="alinear" >Periodo</th>
-                                    <th>año</th>
+                                    <th>Año</th>
                                     <th>Indice Global</th>
                                     <th>Indice del periodo</th>
                                     <th>Observación</th>
@@ -111,7 +112,8 @@ function valida(e){
                                   </thead>
                                   <tbody>
                                     @foreach($actualizacions as $actualizacion)
-                                            <tr>                                              
+                                            <tr>
+                                                <td>{{$actualizacion->universidad}}</td>                                              
                                                 <td class="center">                                                    
                                                    {{$actualizacion->periodo}} 
                                                 </td>
@@ -356,8 +358,8 @@ function valida(e){
       </div>
       {!! Form::open(['route' => ['actualizacion.store'], 'method'=>'POST', 'files'=>true,'data-parsley-validate']) !!}
       <div class="modal-body">
-
-        
+           
+          <input type="text" name="universidad" style="display: none;" value="{{$becario->abreUniversidad}}">
           <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}"> 
           <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
           <div class="form-group">

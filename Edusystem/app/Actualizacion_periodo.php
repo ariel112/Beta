@@ -11,7 +11,8 @@ class Actualizacion_periodo extends Model
    	'id_datos_personales',
    	'calendario_universidad_id',
    	'promedio_global',
-   	'promedio_periodo'
+   	'promedio_periodo',
+   	'universidad'
 
    	];
 }

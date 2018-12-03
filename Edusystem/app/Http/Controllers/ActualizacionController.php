@@ -105,7 +105,8 @@ class ActualizacionController extends Controller
     {
         $actualizacion =  Actualizacion_periodo::find($id);        
         $actualizacion->promedio_periodo=$request->promedio_periodo;
-        $actualizacion->promedio_global=$request->promedio_global;     
+        $actualizacion->promedio_global=$request->promedio_global;
+        $actualizacion->universidad= $request->universidad;    
         $actualizacion->save();
 
          /*Reporte*/
@@ -207,7 +208,8 @@ class ActualizacionController extends Controller
                 Date_format(B.inicio,'%Y') AS anio, 
                 A.promedio_global AS globals ,
                 A.promedio_periodo AS periodos,
-                A.id AS id_actualizacion
+                A.id AS id_actualizacion,
+                A.universidad AS universidad
             FROM actualizacion_periodo A
             INNER JOIN calendario_universidad B
             ON(A.calendario_universidad_id= B.id)

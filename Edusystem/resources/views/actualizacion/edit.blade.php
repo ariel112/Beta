@@ -60,7 +60,12 @@ function valida(e){
                     <br/>
 
  		{!! Form::open(['route' => ['actualizacion.update',$actualizacion->id], 'method'=>'PUT', 'files'=>true,'data-parsley-validate']) !!}	 			 <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">		                 
-         <input type="text" name="id_datos_personales" style="display: none;" value="{{$actualizacion->id_datos_personales}}">                                         
+         <input type="text" name="id_datos_personales" style="display: none;" value="{{$actualizacion->id_datos_personales}}"> 
+
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Universidad (Abreviatura):</label>
+            <input  type="text" value="{{$actualizacion->universidad}}" name="universidad" class="form-control" style="width: 140px;" required>
+          </div>                                       
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Indice Global:</label>
             <input onkeypress="return valida(event)" maxlength="3" type="text" value="{{$actualizacion->promedio_periodo}}" name="promedio_global" class="form-control" style="width: 60px;" required>

@@ -210,3 +210,8 @@ Route::PUT('update-cambiouniversidad/{id}','AspirantesController@updateUniversid
 
 /*IMPORTO LA BASE DE DATOS DESDE EXCEL*/
 Route::post('/import-excel', 'ConvenioController@importFile');
+
+
+Route::get('verifica/identidades','ConvenioController@verifica')->name('verifica.identidad');
+
+Route::get('cargar/periodo','ConvenioController@cargo')->name('cargo.convenio');
