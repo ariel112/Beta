@@ -171,7 +171,7 @@
                         </div>
                  
                         <div class="tab-pane" id="messages">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
+                         <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
                             <div class="x_title">
                               <h2>Persona <small>Dependiente</small></h2>                
@@ -220,7 +220,7 @@
                         </div>
                       
                         <div class="tab-pane" id="settings">
-                             <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
                   <h2>Datos <small>Familiares</small></h2>                

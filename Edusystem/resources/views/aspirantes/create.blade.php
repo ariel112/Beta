@@ -185,23 +185,24 @@ function valida(e){
                           <div align="center"><h2>CENTRO UNIVERSITARIO</h2></div>
                          
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Universidad:
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                              Universidad:
                             </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select id="universidad" class="form-control"  required  >
-		                      <option selected disabled>Seleccion la universidad</option>
-                              @foreach($universidades as $universidad)
-                              <option value="{{$universidad->id}}">{{$universidad->nombre}}</option>                             
-                              @endforeach    
-		                      </select>
-                            </div>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="universidad" class="form-control" name="universidad_id" required  >
+  		                        <option selected disabled>Seleccione la universidad</option>
+                                @foreach($universidades as $universidad)
+                                <option value="{{$universidad->id}}">{{$universidad->nombre}} ({{$universidad->abreviatura}})</option>                             
+                                @endforeach    
+  		                      </select>
+                          </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >Campus
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select  id="campus" class="form-control"  required >
-			                      <option selected disabled>Seleccion un campus</option>		                      
+			                      <option selected disabled>Seleccione un campus</option>		                      
 			                    </select>
                             </div>
                           </div>

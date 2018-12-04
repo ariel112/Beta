@@ -95,7 +95,8 @@ class PerfilController extends Controller
           $usuario = User::find($request->id_usuario);
 
                 /*mando la imagen para que la toma desde el celular*/
-                if($request->file('image')) { 
+                if($request->file('image')) {
+                
                 $file=$request->file('image');
                 $name='Foto_perfilCel_'.time().'.'.$file->getClientOriginalExtension();
                 $path = public_path().'/images/perfiles/';

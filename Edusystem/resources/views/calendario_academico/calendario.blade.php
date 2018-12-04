@@ -28,6 +28,7 @@
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                        <th class="alinear">Codigo</th>   
                         <th class="alinear" >Imagen</th>
                         <th class="alinear" >Nombre</th>                        
                         </tr>
@@ -37,10 +38,9 @@
                       <tbody>
                          @foreach ($universidades as $universidad)         
                                 <tr>
-
+                                    <th class="alinear"><font size="10">{{$universidad->id}}</font></th>  
                                     <td class="center">
-                                        <a href="{{route('universidad.perfil', $universidad->id)}}">
-                                            
+                                        <a href="{{route('universidad.perfil', $universidad->id)}}">                                            
                                             <img class="center-imagen" width="80" height="80" src="/logo-universidades/{{$universidad->url_imagen}}">
                                         </a>    
                                     </td>

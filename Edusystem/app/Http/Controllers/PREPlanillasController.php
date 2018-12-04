@@ -116,7 +116,7 @@ class PREPlanillasController extends Controller
                 WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo')
-                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m') )
+                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m') OR (C.retencion_inicio IS NULL  AND C.retencion_final IS NULL) )
                         AND (('$numMes' NOT BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo') OR C.estado_practica IS NULL ) 
                         AND (". $nueva ."='Ambos Periodo')                       
 
@@ -309,7 +309,7 @@ $data=[];
                 WHERE  ('$numMes' BETWEEN date_format(A.inicio,'%Y-%m') AND date_format(A.final,'%Y-%m')) 
                         AND (B.promedio_global>=65 AND B.promedio_periodo>=65) 
                         AND (C.estado_estudios='Activo' )
-                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m'))
+                        AND ('$numMes' NOT BETWEEN date_format(C.retencion_inicio,'%Y-%m') AND date_format(C.retencion_final,'%Y-%m') OR (C.retencion_inicio IS NULL  AND C.retencion_final IS NULL) )
                         AND (('$numMes' NOT BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo') OR C.estado_practica IS NULL ) 
                         AND (" . $nueva . "='Si')                           
                             GROUP BY    A.universidad_id, 
@@ -371,8 +371,7 @@ $practica= DB::select("
                 ON(L.id_depto=M.id_depto)
                 WHERE   '$numMes' BETWEEN  date_format(C.practica_inicio,'%Y-%m') AND date_format(C.practica_fin,'%Y-%m') AND C.estado_practica = 'Activo'
                                                  
-                            GROUP BY    A.universidad_id, 
-                                      
+                            GROUP BY    A.universidad_id,                                      
                                         B.id_datos_personales,
                                         C.nombre,
                                         M.departamento,

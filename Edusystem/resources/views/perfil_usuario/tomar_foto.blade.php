@@ -58,6 +58,7 @@
                           <i class="fa fa-camera"></i>        
                           <input  name="image" type="file"  accept="image/*" capture="camera" required>
                        </div>
+                       
                       <div align="center">
                       {!! Form::submit('Guardar Foto',['class'=>'btn btn-info', 'id'=>'btnInfo']) !!}
                       {!! Form::close()!!}       

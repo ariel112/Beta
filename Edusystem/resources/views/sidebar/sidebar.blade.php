@@ -126,6 +126,22 @@
                           <li><a href="{{route('actualizacion.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
                         </ul>
                     </li>
+                    <li><a><i class="fa fa-slideshare"></i>Becarios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('aspirantes.create')}}"><i class="fa fa-plus"></i>Agregar</a></li>
+                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-ban"></i>Retención de Pagos<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('retencion.index')}}"><i class="fa fa-search"></i> Buscar Becarios</a></li>
+                        </ul>
+                    </li>
+                      <li><a><i class="fa fa-check-square"></i> Estatus Becarios <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
+                        </ul>
+                  </li>   
                    @endif 
                    
                     
@@ -139,7 +155,14 @@
                         </ul>
                     </li>
                   @endif
-
+                @if(Auth::user()->DigitalizadorOperaciones())
+                <li><a><i class="fa fa-slideshare"></i>Becarios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">                          
+                          <li><a href="{{route('aspirantes.index')}}"><i class="fa fa-search"></i>Buscar</a></li>
+                        </ul>
+                    </li>
+                @endif  
+        
                 @if(Auth::user()->DigitadorOperaciones())
                  <li><a><i class="fa fa-slideshare"></i>Becarios<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

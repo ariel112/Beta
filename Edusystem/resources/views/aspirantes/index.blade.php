@@ -31,8 +31,10 @@
                         <th class="alinear" >Imagen</th>
                         <th>Nombre</th>
                         <th>Identidad</th>
-                        <th>Telefono</th>                      
+                        <th>Telefono</th>
+                        @if(Auth::user()->DigitadorOperaciones())                      
                         <th class="alinear"> Editar</th>
+                        @endif
                         </tr>
                       </thead>
 
@@ -55,12 +57,14 @@
                                     @endif
                                     <td>{{$dato->nombre}}</td>
                                     <td>{{$dato->identidad}}</td>
-                                    <td>{{$dato->celular}}</td>                                    
+                                    <td>{{$dato->celular}}</td>
+                                    @if(Auth::user()->DigitadorOperaciones())                                    
                                     <td class="alinear">
                                         <a href="{{route('aspirantes.edit',$dato->id)}}">
                                             <img class="center-imagen" width="50" height="50" src="{{asset('images/editar.png')}}">
                                         </a>
                                     </td>
+                                    @endif
                             
                                 </tr>
                         @endforeach

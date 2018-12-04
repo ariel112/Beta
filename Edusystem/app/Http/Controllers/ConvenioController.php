@@ -30,13 +30,15 @@ class ConvenioController extends Controller
                 WHERE promedio_global>100;
 
          ");
+
         $mensaje2 = DB::select("
             SELECT 
             CONCAT('Hay ',COUNT(*),' registros de PROMEDIO PERIODO con nota mayor a 100!!! Por favor verifique su informacion') as mensaje, COUNT(*) as contador
                 FROM temporal_actualizacion_periodo 
-                WHERE promedio_periodo>100;    
+                WHERE promedio_periodo>100;  
 
          ");
+
         $mensaje3 = DB::select("
         SELECT CONCAT('El sistema dectecto solo ',COUNT(*), ' Identidades que concuerdan con nuestra base de datos' ) as mensaje
                 FROM temporal_actualizacion_periodo A
@@ -94,23 +96,35 @@ class ConvenioController extends Controller
     public function cargo(){
 
         $temporales = Temporal_actualizacion_periodo::all(); 
-            foreach ($temporales as $temporal) {
+        foreach ($temporales as $temporal) {
 
             $verificas = DB::select("
                 SELECT COUNT(*) as estado
                 FROM actualizacion_periodo 
                 WHERE id_datos_personales='$temporal->id_datos_personales' AND calendario_universidad_id= '$temporal->calendario_universidad_id';
-             ");
-             foreach($verificas as $verifica)   
-                        if($verifica->estado==0 AND $temporal->id_datos_personales!=''){                            
-                        $actualizacion = new Actualizacion_periodo();
-                        $actualizacion->id_datos_personales = $temporal->id_datos_personales;
-                        $actualizacion->calendario_universidad_id =$temporal->calendario_universidad_id;
-                        $actualizacion->promedio_global =$temporal->promedio_global;
-                        $actualizacion->promedio_periodo =$temporal->promedio_periodo;
-                        $actualizacion->save();
-                        
-                        }
+                                    ");
+
+            foreach($verificas as $verifica) {   
+                if($verifica->estado==0 AND $temporal->id_datos_personales!=''){
+                            $contador =DB::select("
+                               SELECT COUNT(*) AS contador
+                                    FROM datos_personales
+                                    WHERE universidad_id='$temporal->universidad_id' AND id='$temporal->id_datos_personales'                       
+                             ");
+                            foreach ($contador as $valor){                                                                                        
+                                   if($valor->contador ==1){
+                                           $actualizacion = new Actualizacion_periodo();
+                                           $actualizacion->id_datos_personales = $temporal->id_datos_personales;
+                                           $actualizacion->calendario_universidad_id =$temporal->calendario_universidad_id;
+                                           $actualizacion->promedio_global =$temporal->promedio_global;
+                                           $actualizacion->promedio_periodo =$temporal->promedio_periodo;
+                                           $actualizacion->Universidad= $temporal->universidad;
+                                           $actualizacion->save();
+                                   } 
+                               }                            
+                                                  
+                }         
+            }
         }
         return redirect()->route('convenio.index');
     }

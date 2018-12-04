@@ -326,7 +326,7 @@ $('#estatus').click(function () {
     $('#archivo').attr('required', 'true');
     $('#descripcion').removeAttr('required');
     $('#descripcion-estado').fadeOut('fast');
-    //$('#registrarE').fadeIn();     
+    $('#registrarE').fadeIn();     
    }
    if($estatus=='Activo' || $estatus=='Inactivo' || $estatus=='Egresado'){
     $('#descripcion').attr('required', 'true');
@@ -336,7 +336,7 @@ $('#estatus').click(function () {
     $('#tiempo-practica').fadeOut('slow');
     $('#descripcion-estado').fadeIn('slow');
 
-    //$('#registrarE').fadeIn();
+    $('#registrarE').fadeIn();
    }
     
 });

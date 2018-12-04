@@ -54,6 +54,7 @@ class Datos_personales extends Model
         'practica_fin',
         'estado_practica',
         'retencion_inicio',
-        'retencion_final'
+        'retencion_final',
+        'universidad_id'
     	];
 }

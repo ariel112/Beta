@@ -27,19 +27,16 @@
                     <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                       <div class="profile_img">
                         <div id="crop-avatar">
-                          <!-- Current avatar -->
-                          
+                          <!-- Current avatar -->                          
                           @if($user->img_url==null )
                            <img class="img-responsive avatar-view" src="{{asset('images/user.png')}}" alt="Avatar" title="Change the avatar">               
                            @else
-                            <img class="img-responsive avatar-view" src="/images/perfiles/{{ $user->img_url}}" alt="Avatar" title="Change the avatar">                       
-                                                     
-                         @endif 
+                            <img class="img-responsive avatar-view" src="/images/perfiles/{{ $user->img_url}}" alt="Avatar" title="Change the avatar">
+                          @endif 
                         </div>
                       </div>
                       <h3 class="text-capitalize">{{ $user->name }}</h3>
-                      <ul class="list-unstyled user_data">                       
-
+                      <ul class="list-unstyled user_data">
                         <li>
                           <h4> <i class="fa fa-briefcase user-profile-icon"></i> <i id="cargo">{{ $user->type }}</i></h4>
                         </li>                     
@@ -76,7 +73,6 @@
                           </table>
                       </ul>
                       <!-- end of skills -->
-
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                       <!-- end of user-activity-graph -->
@@ -116,13 +112,11 @@
                                                       <div class="date">
                                                         {{$accion->fecha}}
                                                       </div>
-                                                    </div>
-                                                 
+                                                    </div>                                                 
                                                   </div>
                                                 </div>                                                
                                               </div>
-                                          </td>
-                                                     
+                                          </td>                                                     
                                       </tr>                                     
                               @endforeach    
                             </tbody>
@@ -134,8 +128,7 @@
                           <table id="estatus11" class="table table-striped table-bordered">
                             <thead>
                               <tr>                            
-                              <th>Sesiones en el sistema</th>
-                                            
+                              <th>Sesiones en el sistema</th>                                            
                               </tr>
                             </thead>
                             <tbody>
@@ -276,12 +269,11 @@
 
 @section('script')
 
-      <!--Este script es para las peticiones con ajax -->
+    <!--Este script es para las peticiones con ajax -->
     <script src="{{ asset('js/tabla.js')}}"></script>
     <!-- morris.js -->
     <script type="text/javascript" src="{{asset('template/vendors/raphael/raphael.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('template/vendors/morris.js/morris.min.js')}}"></script>
-   
+    <script type="text/javascript" src="{{asset('template/vendors/morris.js/morris.min.js')}}"></script>   
 
     <!-- Datatables -->
     <script type="text/javascript" src="{{asset('template/vendors/datatables.net/js/jquery.dataTables.js')}}"></script>  

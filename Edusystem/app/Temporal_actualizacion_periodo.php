@@ -13,6 +13,8 @@ class Temporal_actualizacion_periodo extends Model
    	'promedio_global',
    	'promedio_periodo',
    	'id_datos_personales',
+   	'Universidad_id',
+   	'universidad'
 
    	];
 }
