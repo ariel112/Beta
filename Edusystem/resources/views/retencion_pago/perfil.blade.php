@@ -289,17 +289,19 @@
 </div>
 
 
- <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
+ 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" align="center">
         <h5 class="modal-title" id="exampleModalLabel">Retencion de pagos</h5>
         <h3>RETENCIÓN DE PAGO</h3>
-     <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}">  
+      
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>['retencion.store'], 'method'=>'POST', 'files'=>true,'class'=>'form-horizontal form-label-left']) !!}
+        <input type="text" name="id_datos_personales" style="display: none;" value="{{$becario->id}}" class="form-control" style="width: 60px;">
+        <input type="text" name="users_id" style="display: none;" value="{{Auth::user()->id}}"> 
       	<div class="form-group">
             <label for="recipient-name" class="col-form-label">Descripcion:</label>
             <textarea name="descripcion" class="form-control" required></textarea>

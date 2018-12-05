@@ -141,7 +141,12 @@
                         <ul class="nav child_menu">
                           <li><a href="{{route('estatus.index')}}"><i class="fa fa-search"></i>Buscar Becarios</a></li>
                         </ul>
-                  </li>   
+                  </li>  
+                    <li><a><i class="fa fa-university"></i>Cambio de Universidad<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                          <li><a href="{{route('index.cambiouniversidad')}}"><i class="fa fa-search"></i>Buscar</a></li> 
+                        </ul>
+                  </li> 
                    @endif 
                    
                     
