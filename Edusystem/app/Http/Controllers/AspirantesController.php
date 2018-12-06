@@ -431,7 +431,12 @@ class AspirantesController extends Controller
        $carrera = Datos_personales_has_carreras::find($request->idd_carrera);        
        $carrera->carrera_id=$request->carrera_id;
        $carrera->save();
+       /*Datos del aspirante*/
 
+      $aspirante =  Datos_personales::find($id);
+      $aspirante->cuenta_universitaria=$request->cuenta_universitaria;
+      $aspirante->universidad_id= $request->universidad_id;     
+      $aspirante->save();
        $abreviatura = DB::select("
                 SELECT E.abreviatura as abreviatura
                         FROM datos_personales_has_carreras A

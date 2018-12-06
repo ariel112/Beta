@@ -75,7 +75,7 @@ function valida(e){
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Universidad:
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select id="universidad" class="form-control"  required>		                      
+                            <select id="universidad" class="form-control" name="universidad_id" required>
                               @foreach($universidades as $universidad)
                               @if($listUnivesidad==$universidad->id)
                               <option selected value="{{$universidad->id}}">{{$universidad->nombre}}</option>
@@ -112,6 +112,13 @@ function valida(e){
                                 <select  id="carrera" name="carrera_id" class="form-control"  required >
                             <option selected value="{{$id_carrera}}">{{$nombre_carrera}}</option>                          
                           </select>
+                            </div>
+                          </div>
+                           <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Cuenta Universitaria:
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" value="{{$aspirante->cuenta_universitaria}}"  name="cuenta_universitaria" required  onkeypress="return valida(event)" maxlength="11" minlength="11"  class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>                          
 						              <br>
